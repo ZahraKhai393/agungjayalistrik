@@ -95,9 +95,23 @@
                     <h2 class="text-xl font-bold text-slate-900 tracking-tight">Dashboard Penawaran &amp; Dokumen</h2>
                     <p class="text-sm text-slate-500 mt-1">Pantau status penawaran dan invoice dalam satu tampilan.</p>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <label for="filterTahun" class="text-sm text-slate-600 font-medium">Tahun</label>
-                    <select id="filterTahun" onchange="loadDashboardData()" class="glass-input px-3 py-2 rounded-md text-sm font-semibold"></select>
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <div class="flex items-center space-x-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+                        <button type="button" onclick="eksporSemuaData()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 hover:text-red-700 shadow-sm border border-slate-200 transition flex items-center gap-1.5" title="Unduh seluruh data SPH, Invoice, dan catatan toko untuk cadangan / pindah ke Vercel">
+                            <i class="fa-solid fa-cloud-arrow-down text-red-600 text-xs"></i>
+                            <span>Cadangkan Data</span>
+                        </button>
+                        <button type="button" onclick="document.getElementById('inputPindahData').click()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-700 hover:text-emerald-700 shadow-sm border border-slate-200 transition flex items-center gap-1.5" title="Pulihkan / impor file cadangan data ke sistem">
+                            <i class="fa-solid fa-cloud-arrow-up text-emerald-600 text-xs"></i>
+                            <span>Pulihkan Data</span>
+                        </button>
+                        <input type="file" id="inputPindahData" accept=".json" class="hidden" onchange="imporSemuaData(event)">
+                    </div>
+
+                    <div class="flex items-center space-x-2 bg-white px-3 py-1 rounded-xl border border-slate-200 shadow-sm">
+                        <label for="filterTahun" class="text-xs text-slate-600 font-semibold">Tahun</label>
+                        <select id="filterTahun" onchange="loadDashboardData()" class="glass-input px-2 py-1 rounded-md text-xs font-bold text-slate-900 border-0 focus:ring-0"></select>
+                    </div>
                 </div>
             </div>
 
@@ -425,6 +439,103 @@
         }
 
         loadDashboardData();
+
+        // ===== Fitur Cadangkan (Ekspor) & Pulihkan (Impor) Data Transaksi =====
+        function showToast(pesan, tipe = 'success', durasi = 1500, onSelesai = null) {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'fixed top-6 right-6 z-[9999] flex flex-col gap-2.5 pointer-events-none';
+                document.body.appendChild(container);
+            }
+            const toast = document.createElement('div');
+            const isSuccess = tipe === 'success';
+            const bgClass = isSuccess ? 'bg-emerald-600 text-white' : 'bg-red-600 text-white';
+            const iconClass = isSuccess ? 'fa-circle-check' : 'fa-triangle-exclamation';
+
+            toast.className = `flex items-center gap-3 px-5 py-3 rounded-2xl shadow-2xl ${bgClass} text-xs font-semibold transform transition-all duration-300 translate-y-[-16px] opacity-0 pointer-events-auto border border-white/20 tracking-wide`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass} text-base"></i><span>${pesan}</span>`;
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-[-16px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-16px]', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                    if (onSelesai) onSelesai();
+                }, 300);
+            }, durasi);
+        }
+
+        function eksporSemuaData() {
+            const cadangan = {
+                app: "PT. Agung Jaya Listrik",
+                sistem: "Sistem Administrasi Dokumen & Transaksi",
+                waktuEkspor: new Date().toISOString(),
+                data_sph: JSON.parse(localStorage.getItem('data_sph') || '[]'),
+                data_invoice: JSON.parse(localStorage.getItem('data_invoice') || '[]'),
+                data_pengeluaran: JSON.parse(localStorage.getItem('data_pengeluaran') || '[]'),
+                data_inventory: JSON.parse(localStorage.getItem('data_inventory') || '[]'),
+                data_po: JSON.parse(localStorage.getItem('data_po') || '[]'),
+                data_surat_jalan: JSON.parse(localStorage.getItem('data_surat_jalan') || '[]'),
+                data_jadwal: JSON.parse(localStorage.getItem('data_jadwal') || '[]')
+            };
+
+            const jsonStr = JSON.stringify(cadangan, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const d = new Date();
+            const tgl = d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0');
+            a.href = url;
+            a.download = `cadangan-data-agungjayalistrik-${tgl}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('Cadangan data toko berhasil diunduh!', 'success', 1500);
+        }
+
+        function imporSemuaData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    let jmlSPH = 0, jmlInv = 0;
+
+                    if (Array.isArray(data.data_sph)) {
+                        localStorage.setItem('data_sph', JSON.stringify(data.data_sph));
+                        jmlSPH = data.data_sph.length;
+                    }
+                    if (Array.isArray(data.data_invoice)) {
+                        localStorage.setItem('data_invoice', JSON.stringify(data.data_invoice));
+                        jmlInv = data.data_invoice.length;
+                    }
+                    if (Array.isArray(data.data_pengeluaran)) localStorage.setItem('data_pengeluaran', JSON.stringify(data.data_pengeluaran));
+                    if (Array.isArray(data.data_inventory)) localStorage.setItem('data_inventory', JSON.stringify(data.data_inventory));
+                    if (Array.isArray(data.data_po)) localStorage.setItem('data_po', JSON.stringify(data.data_po));
+                    if (Array.isArray(data.data_surat_jalan)) localStorage.setItem('data_surat_jalan', JSON.stringify(data.data_surat_jalan));
+                    if (Array.isArray(data.data_jadwal)) localStorage.setItem('data_jadwal', JSON.stringify(data.data_jadwal));
+
+                    showToast(`Data berhasil dipulihkan! (${jmlSPH} SPH & ${jmlInv} Invoice)`, 'success', 1500, () => {
+                        window.location.reload();
+                    });
+                } catch (err) {
+                    showToast('Format file cadangan tidak valid!', 'error', 2000);
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
     </script>
 </body>
 </html>
