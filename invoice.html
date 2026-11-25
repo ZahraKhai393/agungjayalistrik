@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - Agung Jaya Listrik</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-dark { background: #fff; border: 1px solid #e2e8f0; }
+        .hero-banner { background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #dc2626; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; width: 220px; border-radius: 0.75rem; box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.18); z-index: 50; background: #fff; border: 1px solid #e2e8f0; }
+        .group:hover .dropdown-menu { display: block; }
+        .glass-input { background: #fff; border: 1px solid #cbd5e1; color: #1e293b; }
+        .glass-input:focus { border-color: #dc2626; outline: none; }
+        .preview-page { background: white; color: black; width: 100%; min-height: 700px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0; }
+        @media (max-width: 767px) {
+            .mobile-nav { scrollbar-width: none; }
+            .mobile-nav::-webkit-scrollbar { display: none; }
+        }
+        @media print {
+            body * { visibility: hidden; }
+            #printable-area, #printable-area * { visibility: visible; }
+            #printable-area { position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+    <!-- Navbar Utama -->
+    <header class="border-b border-slate-200 bg-white sticky top-0 z-50 px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-y-3">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1 border border-slate-200">
+                <img src="logoAJL.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm tracking-wide text-slate-900">Agung Jaya Listrik</h1>
+                <p class="text-[10px] text-slate-500">Invoice &amp; Dokumen</p>
+            </div>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+            <a href="dashboard.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Dashboard</a>
+            <a href="inventory.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Inventory</a>
+            <a href="jadwal.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Pengeluaran</a>
+            <a href="laporan.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Laporan</a>
+            
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md bg-red-50 text-red-700 font-semibold transition flex items-center space-x-1.5">
+                    <span>Buat Dokumen</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Penawaran Harga</a>
+                    <a href="invoice.html" class="block px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Invoice</a>
+                    <a href="surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Jalan</a>
+                    <a href="po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Purchase Order</a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+                    <span>Riwayat</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="riwayat-sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat SPH</a>
+                    <a href="riwayat-invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Invoice</a>
+                    <a href="riwayat-surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Surat Jalan</a>
+                    <a href="riwayat-po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat PO</a>
+                </div>
+            </div>
+        </nav>
+
+        <a href="logout.html" class="px-3 py-1.5 rounded-md border border-slate-200 text-xs text-slate-600 hover:text-red-700 hover:bg-red-50 flex items-center space-x-2">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+        </a>
+        <nav class="mobile-nav lg:hidden w-full overflow-x-auto flex items-center gap-1 border-t border-slate-100 pt-2 text-xs font-medium whitespace-nowrap">
+            <a href="dashboard.html" class="px-3 py-2 rounded-md text-slate-600">Dashboard</a>
+            <a href="inventory.html" class="px-3 py-2 rounded-md text-slate-600">Inventory</a>
+            <a href="jadwal.html" class="px-3 py-2 rounded-md text-slate-600">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3 py-2 rounded-md text-slate-600">Pengeluaran</a>
+            <a href="laporan.html" class="px-3 py-2 rounded-md text-slate-600">Laporan</a>
+            <a href="sph.html" class="px-3 py-2 rounded-md text-slate-600">Buat SPH</a>
+            <a href="invoice.html" class="px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Buat Invoice</a>
+            <a href="surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Surat Jalan</a>
+            <a href="po.html" class="px-3 py-2 rounded-md text-slate-600">Buat PO</a>
+            <a href="riwayat-sph.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat SPH</a>
+            <a href="riwayat-invoice.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Invoice</a>
+            <a href="riwayat-surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Surat Jalan</a>
+            <a href="riwayat-po.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat PO</a>
+        </nav>
+    </header>
+
+    <!-- Konten Utama Invoice -->
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6">
+        
+        <!-- Header Aksi Dokumen -->
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div>
+                <p class="text-xs text-slate-500"><a href="dashboard.html" class="hover:underline">Dashboard</a> &gt; Buat Invoice</p>
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight mt-1">Invoice / Tagihan</h2>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+                <button onclick="generateNoInvoice()" class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles text-red-600"></i>
+                    <span>Auto Nomor</span>
+                </button>
+                <button onclick="resetForm()" class="bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 px-3.5 py-2 rounded-xl text-xs font-semibold transition shadow-sm">
+                    <i class="fa-solid fa-rotate-right mr-1.5"></i> Reset
+                </button>
+                <button onclick="simpanData()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-sm">
+                    <i class="fa-solid fa-floppy-disk mr-1.5"></i> Simpan
+                </button>
+                <button onclick="window.print()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-sm">
+                    <i class="fa-solid fa-file-pdf mr-1.5"></i> Download PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Grid Dua Kolom -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- KOLOM KIRI: FORM INPUT -->
+            <div class="lg:col-span-6 space-y-6">
+                <div class="card-dark rounded-xl p-5 md:p-6 space-y-4 shadow-sm">
+                    <h3 class="text-sm font-bold text-slate-900 border-b border-slate-200 pb-3 flex items-center space-x-2">
+                        <i class="fa-solid fa-file-invoice-dollar text-red-700"></i>
+                        <span>Informasi Tagihan</span>
+                    </h3>
+                    <div id="infoSPH" class="hidden text-[11px] bg-blue-50 border border-blue-200 text-blue-700 rounded-lg px-3 py-2 font-medium"></div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Tanggal</label>
+                            <input type="date" id="inputTanggal" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" oninput="updatePreview()">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">No Invoice</label>
+                            <input type="text" id="inputNoInvoice" placeholder="INV/001/10/2026" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" oninput="updatePreview()">
+                            <p id="infoUrut" class="text-[10px] text-slate-500 mt-1"></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Kepada (Nama Perusahaan / Customer)</label>
+                        <input type="text" id="inputPerusahaan" placeholder="Nama PT / Pelanggan" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" oninput="updatePreview()">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Alamat Customer</label>
+                        <textarea id="inputAlamat" rows="2" placeholder="Alamat lengkap..." class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" oninput="updatePreview()"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Bank Pembayaran</label>
+                            <input type="text" id="inputBank" placeholder="BCA / Mandiri" value="BCA - 1234567890 a.n PT. Agung Jaya Listrik" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" oninput="updatePreview()">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-600 mb-1">Status Pembayaran</label>
+                            <select id="inputStatus" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800" onchange="toggleDP(); updatePreview()">
+                                <option value="Belum Lunas">Belum Lunas</option>
+                                <option value="DP Diterima">DP Diterima</option>
+                                <option value="Lunas">Lunas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="blokDP" class="hidden">
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Nominal DP diterima (Rp)</label>
+                        <input type="number" id="inputDP" min="0" value="0" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                    </div>
+                </div>
+
+                <!-- Bagian Item Barang -->
+                <div class="card-dark rounded-xl p-5 md:p-6 space-y-4 shadow-sm">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h3 class="text-sm font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-cart-shopping text-red-700"></i>
+                            <span>Daftar Barang / Jasa</span>
+                        </h3>
+                        <button onclick="tambahItem()" class="bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 px-3 py-1.5 rounded-xl text-xs font-semibold transition">
+                            + Tambah Item
+                        </button>
+                    </div>
+
+                    <div id="containerItem" class="space-y-4">
+                        <div class="item-row bg-slate-50 border border-slate-200 p-4 rounded-xl relative space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-slate-700">Item #1</span>
+                                <button onclick="hapusItem(this)" class="text-slate-400 hover:text-red-600 text-xs"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                            <input type="text" placeholder="Nama Produk / Keterangan" class="glass-input item-nama w-full rounded-lg px-3 py-1.5 text-xs text-slate-800" oninput="updatePreview()">
+                            <div class="grid grid-cols-3 gap-2">
+                                <div>
+                                    <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Qty</label>
+                                    <input type="number" value="1" min="1" class="glass-input item-qty w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Harga Satuan (Rp)</label>
+                                    <input type="number" value="0" class="glass-input item-harga w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Satuan</label>
+                                    <input type="text" value="pcs" class="glass-input item-satuan w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: PREVIEW INVOICE -->
+            <div class="lg:col-span-6">
+                <div class="sticky top-20">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Preview Invoice</span>
+                        <span class="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-medium">Real-time update</span>
+                    </div>
+
+                    <div id="printable-area" class="preview-page rounded-2xl p-8 text-slate-900 text-xs">
+                        
+                        <!-- Header Surat -->
+                        <div class="flex justify-between items-start border-b-2 border-red-600 pb-6 mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-14 h-14 bg-white border border-slate-200 rounded-xl p-1 shadow-sm flex items-center justify-center">
+                                    <img src="logoAJL.png" alt="Logo" class="w-full h-full object-contain">
+                                </div>
+                                <div>
+                                    <h2 class="text-lg font-black text-red-600 tracking-tight">AGUNG JAYA LISTRIK</h2>
+                                    <p class="text-[9px] text-slate-600 leading-tight">Mechanical Electrical, Cable Accessories SUTR &amp; SUTM,<br>Termination &amp; Jointing KIT, Arester, Trafo, Panel</p>
+                                </div>
+                            </div>
+                            <div class="text-right text-[9px] text-slate-600">
+                                <p><i class="fa-solid fa-location-dot text-red-600 mr-1"></i> Pasar Kenari Lama AKS LT.2 No.190 Jakarta Pusat</p>
+                                <p><i class="fa-solid fa-phone text-red-600 mr-1"></i> 081285789047 | <i class="fa-solid fa-envelope text-red-600 mr-1"></i> info@agungjayalistrik.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Judul Invoice -->
+                        <div class="text-center my-6">
+                            <h3 class="text-sm font-extrabold tracking-widest uppercase border-b border-slate-300 inline-block pb-1">INVOICE TAGIHAN</h3>
+                        </div>
+
+                        <!-- Info Invoice -->
+                        <div class="grid grid-cols-2 gap-4 mb-6 text-[11px]">
+                            <div class="space-y-1">
+                                <div class="flex"><span class="w-24 font-semibold">No. Invoice</span>: <span id="prevNoInvoice" class="ml-1 text-slate-700">-</span></div>
+                                <div class="flex"><span class="w-24 font-semibold">Tanggal</span>: <span id="prevTanggal" class="ml-1 text-slate-700">-</span></div>
+                                <div class="flex"><span class="w-24 font-semibold">Status</span>: <span id="prevStatus" class="ml-1 font-bold text-red-600">Belum Lunas</span></div>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1">
+                                <p class="font-bold text-slate-800">Tagihan Kepada:</p>
+                                <p id="prevPerusahaan" class="font-semibold text-slate-900">(Nama Customer)</p>
+                                <p id="prevAlamat" class="text-slate-600 text-[10px]">(Alamat Customer)</p>
+                            </div>
+                        </div>
+
+                        <!-- Tabel Item -->
+                        <table class="w-full mb-6 border-collapse">
+                            <thead>
+                                <tr class="bg-red-600 text-white text-[10px]">
+                                    <th class="py-2 px-2 text-center w-8">NO</th>
+                                    <th class="py-2 px-2 text-left">KETERANGAN BARANG / JASA</th>
+                                    <th class="py-2 px-2 text-center w-16">QTY</th>
+                                    <th class="py-2 px-2 text-right w-24">HARGA SATUAN</th>
+                                    <th class="py-2 px-2 text-right w-28">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody id="previewTableBody" class="divide-y divide-slate-200 text-[11px]">
+                            </tbody>
+                        </table>
+
+                        <!-- Informasi Pembayaran & Total -->
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-[10px] space-y-1">
+                                <p class="font-bold text-slate-800">INFORMASI PEMBAYARAN:</p>
+                                <p>Transfer melalui rekening berikut:</p>
+                                <p id="prevBank" class="font-semibold text-slate-900">-</p>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-1">
+                                <div class="flex justify-between font-bold text-slate-900 text-xs pt-1 border-t border-slate-200">
+                                    <span>TOTAL TAGIHAN:</span>
+                                    <span id="prevTotal" class="text-red-600">Rp 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tanda Tangan -->
+                        <div class="flex justify-end mt-8">
+                            <div class="text-center">
+                                <p class="text-slate-600 mb-12">Hormat kami,<br><strong>PT. Agung Jaya Listrik</strong></p>
+                                <p class="font-bold border-b border-slate-800 pb-0.5">Agung Praditya</p>
+                                <p class="text-[10px] text-slate-500">Direktur Utama</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Invoice -->
+    <script>
+        // ===== Modern Toast & Modal Notifications =====
+        function showToast(pesan, tipe = 'success', durasi = 1300, onSelesai = null) {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'fixed top-6 right-6 z-[9999] flex flex-col gap-2.5 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            const isSuccess = tipe === 'success';
+            const isError = tipe === 'error';
+
+            const bgClass = isSuccess ? 'bg-emerald-600 text-white' : (isError ? 'bg-red-600 text-white' : 'bg-amber-500 text-white');
+            const iconClass = isSuccess ? 'fa-circle-check' : (isError ? 'fa-circle-xmark' : 'fa-triangle-exclamation');
+
+            toast.className = `flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl ${bgClass} text-xs font-semibold transform transition-all duration-300 translate-y-[-16px] opacity-0 pointer-events-auto border border-white/20 tracking-wide`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass} text-base"></i><span>${pesan}</span>`;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-[-16px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-16px]', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                    if (onSelesai) onSelesai();
+                }, 300);
+            }, durasi);
+        }
+
+        function showConfirmModal({ judul, pesan, icon = 'fa-circle-question', warnaIcon = 'text-red-600', teksOK = 'Ya, Lanjutkan', teksBatal = 'Batal', onConfirm, onCancel }) {
+            let modal = document.getElementById('customConfirmModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'customConfirmModal';
+                modal.className = 'fixed inset-0 z-[9999] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-200';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 transform transition-all duration-200 scale-95 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center ${warnaIcon} text-lg shrink-0">
+                            <i class="fa-solid ${icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">${judul}</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${pesan}</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+                        <button id="modalBtnBatal" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition border border-slate-200">${teksBatal}</button>
+                        <button id="modalBtnOK" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-red-600 hover:bg-red-700 transition shadow-sm">${teksOK}</button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+
+            document.getElementById('modalBtnBatal').onclick = () => {
+                modal.classList.add('hidden');
+                if (onCancel) onCancel();
+            };
+            document.getElementById('modalBtnOK').onclick = () => {
+                modal.classList.add('hidden');
+                if (onConfirm) onConfirm();
+            };
+        }
+
+        // ===== Data bersama (prototipe: localStorage) =====
+        function bacaItem() {
+            return Array.from(document.querySelectorAll('.item-row')).map(r => ({
+                nama: r.querySelector('.item-nama').value.trim(),
+                qty: parseFloat(r.querySelector('.item-qty').value) || 0,
+                harga: r.querySelector('.item-harga') ? (parseFloat(r.querySelector('.item-harga').value) || 0) : 0,
+                satuan: r.querySelector('.item-satuan').value || 'pcs'
+            }));
+        }
+        function isiItem(items) {
+            const box = document.getElementById('containerItem');
+            box.innerHTML = '';
+            (items && items.length ? items : [{ nama: '', qty: 1, harga: 0, satuan: 'pcs' }]).forEach(() => tambahItem());
+            const rows = box.querySelectorAll('.item-row');
+            (items || []).forEach((it, i) => {
+                if (!rows[i]) return;
+                rows[i].querySelector('.item-nama').value = it.nama || '';
+                rows[i].querySelector('.item-qty').value = it.qty || 1;
+                if (rows[i].querySelector('.item-harga')) rows[i].querySelector('.item-harga').value = it.harga || 0;
+                rows[i].querySelector('.item-satuan').value = it.satuan || 'pcs';
+            });
+            updatePreview();
+        }
+        function totalItem(items) { return (items || []).reduce((s, i) => s + (i.qty || 0) * (i.harga || 0), 0); }
+        var nomorAuto = true;   // true = nomor dibuat otomatis dan ikut berubah saat tanggal diubah
+        function hariIniISO() {   // tanggal lokal (bukan UTC) agar tidak mundur sehari pada dini hari WIB
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+        function parseISOLokal(s) {
+            const p = String(s || '').split('-');
+            return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]) : new Date(NaN);
+        }
+        // Ambil bulan dan tahun dari nomor invoice (mis. "INV/001/10/2026", "INV-2024-001")
+        function periodeNomor(no) {
+            const str = String(no || '').trim();
+            if (!str) return null;
+            const parts = str.split(/[\/\-_]/);
+            const angka = parts.filter(x => /^\d+$/.test(x));
+            const tahun = angka.find(x => x.length === 4);
+            const thn = tahun ? parseInt(tahun, 10) : null;
+            const pendek = angka.filter(x => x.length <= 3);
+
+            if (pendek.length >= 2 && thn) {
+                return { seq: parseInt(pendek[0], 10), bln: parseInt(pendek[1], 10), thn: thn };
+            } else if (pendek.length === 1 && thn) {
+                return { seq: parseInt(pendek[0], 10), bln: null, thn: thn };
+            }
+            return null;
+        }
+
+        const PETA_BULAN = { jan:0, feb:1, mar:2, apr:3, mei:4, may:4, jun:5, jul:6, agu:7, agt:7, ags:7, aug:7, sep:8, okt:9, oct:9, nov:10, des:11, dec:11 };
+
+        function tglDokumen(i) {
+            if (i.tanggalISO) { const d = parseISOLokal(i.tanggalISO); if (!isNaN(d)) return d; }
+            if (i.tanggal && /^\d{4}-\d{2}-\d{2}/.test(i.tanggal)) { const d = parseISOLokal(i.tanggal); if (!isNaN(d)) return d; }
+            const m = String(i.tanggal || '').match(/(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})/);
+            if (m) {
+                const bulan = PETA_BULAN[m[2].slice(0, 3).toLowerCase()];
+                if (bulan !== undefined) return new Date(+m[3], bulan, +m[1]);
+            }
+            return null;
+        }
+
+        // Nomor urut berikutnya: aman, tidak duplikat, dan akurat
+        function nomorBerikutnya(daftar, ambilNo, format, tanggalISO) {
+            let d = tanggalISO ? parseISOLokal(tanggalISO) : new Date();
+            if (isNaN(d)) d = new Date();
+            const bln = d.getMonth() + 1, thn = d.getFullYear();
+            let maks = 0, noMaks = '';
+
+            daftar.forEach(i => {
+                const noStr = String(ambilNo(i) || '').trim();
+                if (!noStr) return;
+                const p = periodeNomor(noStr);
+                const td = tglDokumen(i);
+
+                const tahunCocok = p && p.thn ? p.thn === thn : (td ? td.getFullYear() === thn : true);
+                const bulanCocok = p && p.bln ? p.bln === bln : (td ? (td.getMonth() + 1) === bln : true);
+
+                if (tahunCocok && bulanCocok) {
+                    let seq = p ? p.seq : null;
+                    if (seq === null) {
+                        const m = noStr.match(/(\d+)/);
+                        if (m) seq = parseInt(m[1], 10);
+                    }
+                    if (seq !== null && !isNaN(seq) && seq > maks) {
+                        maks = seq;
+                        noMaks = noStr;
+                    }
+                }
+            });
+
+            tampilInfoUrut(noMaks);
+
+            let nextSeq = maks + 1;
+            let hasil = format(String(nextSeq).padStart(3, '0'), String(bln).padStart(2, '0'), thn);
+            const semuaNo = new Set(daftar.map(i => String(ambilNo(i) || '').trim().toLowerCase()));
+
+            while (semuaNo.has(hasil.toLowerCase())) {
+                nextSeq++;
+                hasil = format(String(nextSeq).padStart(3, '0'), String(bln).padStart(2, '0'), thn);
+            }
+
+            return hasil;
+        }
+
+        function tampilInfoUrut(noMaks) {
+            const el = document.getElementById('infoUrut');
+            if (!el) return;
+            el.textContent = noMaks ? ('Nomor terakhir pada bulan ini: ' + noMaks) : 'Belum ada dokumen pada bulan ini, urutan mulai dari 001';
+        }
+
+        function konfirmasiPeriode(idNo) {
+            return true;
+        }
+
+        document.getElementById('inputTanggal').value = hariIniISO();
+        updatePreview();
+
+        function generateNoInvoice() {
+            nomorAuto = true;
+            document.getElementById('inputNoInvoice').value = nomorBerikutnya(DB_INV(), i => i.no, (s, b, t) => `INV/${s}/${b}/${t}`, document.getElementById('inputTanggal').value);
+            updatePreview();
+        }
+
+        function tambahItem() {
+            const container = document.getElementById('containerItem');
+            const rowCount = container.getElementsByClassName('item-row').length + 1;
+            
+            const div = document.createElement('div');
+            div.className = 'item-row bg-slate-50 border border-slate-200 p-4 rounded-xl relative space-y-3';
+            div.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-slate-700">Item #${rowCount}</span>
+                    <button onclick="hapusItem(this)" class="text-slate-400 hover:text-red-600 text-xs"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <input type="text" placeholder="Nama Produk / Keterangan" class="glass-input item-nama w-full rounded-lg px-3 py-1.5 text-xs text-slate-800" oninput="updatePreview()">
+                <div class="grid grid-cols-3 gap-2">
+                    <div>
+                        <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Qty</label>
+                        <input type="number" value="1" min="1" class="glass-input item-qty w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Harga Satuan (Rp)</label>
+                        <input type="number" value="0" class="glass-input item-harga w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-600 mb-0.5 font-medium">Satuan</label>
+                        <input type="text" value="pcs" class="glass-input item-satuan w-full rounded-lg px-2 py-1 text-xs text-slate-800" oninput="updatePreview()">
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+        }
+
+        function hapusItem(btn) {
+            btn.closest('.item-row').remove();
+            updatePreview();
+        }
+
+        function updatePreview() {
+            const tgl = document.getElementById('inputTanggal').value;
+            const noInvoice = document.getElementById('inputNoInvoice').value || '-';
+            const perusahaan = document.getElementById('inputPerusahaan').value || '(Nama Customer)';
+            const alamat = document.getElementById('inputAlamat').value || '(Alamat Customer)';
+            const bank = document.getElementById('inputBank').value || '-';
+            const status = document.getElementById('inputStatus').value;
+
+            let formattedDate = '-';
+            if(tgl) {
+                formattedDate = parseISOLokal(tgl).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+
+            document.getElementById('prevNoInvoice').innerText = noInvoice;
+            document.getElementById('prevTanggal').innerText = formattedDate;
+            document.getElementById('prevPerusahaan').innerText = perusahaan;
+            document.getElementById('prevAlamat').innerText = alamat;
+            document.getElementById('prevBank').innerText = bank;
+            document.getElementById('prevStatus').innerText = status;
+
+            const rows = document.querySelectorAll('.item-row');
+            let tbodyHTML = '';
+            let grandTotal = 0;
+
+            rows.forEach((row, index) => {
+                const nama = row.querySelector('.item-nama').value || 'Barang/Jasa';
+                const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+                const harga = parseFloat(row.querySelector('.item-harga').value) || 0;
+                const satuan = row.querySelector('.item-satuan').value || 'pcs';
+                const subtotal = qty * harga;
+                grandTotal += subtotal;
+
+                tbodyHTML += `
+                    <tr>
+                        <td class="py-2 px-2 text-center">${index + 1}</td>
+                        <td class="py-2 px-2 font-medium">${nama}</td>
+                        <td class="py-2 px-2 text-center">${qty} ${satuan}</td>
+                        <td class="py-2 px-2 text-right">Rp ${harga.toLocaleString('id-ID')}</td>
+                        <td class="py-2 px-2 text-right font-semibold">Rp ${subtotal.toLocaleString('id-ID')}</td>
+                    </tr>
+                `;
+            });
+
+            if(rows.length === 0) {
+                tbodyHTML = `<tr><td colspan="5" class="text-center py-4 text-slate-400">Belum ada item</td></tr>`;
+            }
+
+            document.getElementById('previewTableBody').innerHTML = tbodyHTML;
+            document.getElementById('prevTotal').innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+        }
+
+        function resetForm() {
+            document.getElementById('inputNoInvoice').value = '';
+            document.getElementById('inputPerusahaan').value = '';
+            document.getElementById('inputAlamat').value = '';
+            document.getElementById('inputTanggal').value = hariIniISO();
+            nomorAuto = true;
+            generateNoInvoice();
+            document.getElementById('inputDP').value = 0;
+            sphAsal = null;
+            document.getElementById('infoSPH').classList.add('hidden');
+            isiItem([]);
+            showToast('Formulir berhasil di-reset', 'warning', 1000);
+        }
+
+        function DB_INV() { try { return JSON.parse(localStorage.getItem('data_invoice')) || []; } catch (e) { return []; } }
+        function DB_SPH() { try { return JSON.parse(localStorage.getItem('data_sph')) || []; } catch (e) { return []; } }
+        let sphAsal = null;
+
+        function toggleDP() {
+            document.getElementById('blokDP').classList.toggle('hidden', document.getElementById('inputStatus').value !== 'DP Diterima');
+        }
+
+        // Jika dibuka dari Riwayat SPH, isi otomatis dari SPH tersebut
+        function muatDariSPH() {
+            let temp = null;
+            try { temp = JSON.parse(localStorage.getItem('temp_selected_sph')); } catch (e) {}
+            localStorage.removeItem('temp_selected_sph');
+            if (!temp || !temp.sphId) return;
+            const sph = DB_SPH().find(s => s.id === temp.sphId);
+            if (!sph) return;
+            sphAsal = sph;
+            document.getElementById('inputPerusahaan').value = sph.perusahaan || '';
+            document.getElementById('inputAlamat').value = sph.alamat || '';
+            if (sph.items && sph.items.length) isiItem(sph.items);
+            const info = document.getElementById('infoSPH');
+            info.innerText = 'Dibuat dari SPH ' + sph.no + '. Status SPH menjadi Deal setelah invoice disimpan.';
+            info.classList.remove('hidden');
+            generateNoInvoice();
+        }
+
+        function simpanData() {
+            if (!konfirmasiPeriode('inputNoInvoice')) return;
+            simpanDataAsli();
+        }
+
+        function simpanDataAsli() {
+            const no = document.getElementById('inputNoInvoice').value.trim();
+            const perusahaan = document.getElementById('inputPerusahaan').value.trim();
+            const items = bacaItem().filter(i => i.nama);
+            const total = totalItem(items);
+            const status = document.getElementById('inputStatus').value;
+
+            if (!no || !perusahaan) {
+                showToast("Harap isi nomor invoice dan nama customer terlebih dahulu!", "warning", 2000);
+                return;
+            }
+            if (!items.length || total <= 0) {
+                showToast("Isi minimal satu item dengan harga lebih dari 0.", "warning", 2000);
+                return;
+            }
+
+            const daftar = DB_INV();
+            if (daftar.some(i => String(i.no).toLowerCase() === no.toLowerCase())) {
+                showToast("Nomor invoice '" + no + "' sudah dipakai. Sistem otomatis memberikan nomor baru.", "warning", 2000);
+                generateNoInvoice();
+                return;
+            }
+
+            let dp = status === 'DP Diterima' ? (parseFloat(document.getElementById('inputDP').value) || 0) : 0;
+            if (status === 'DP Diterima' && (dp <= 0 || dp > total)) {
+                showToast("Nominal DP harus lebih dari 0 dan tidak melebihi total tagihan.", "warning", 2000);
+                return;
+            }
+
+            const tgl = document.getElementById('inputTanggal').value;
+            daftar.unshift({
+                id: Date.now(),
+                no: no,
+                perusahaan: perusahaan,
+                alamat: document.getElementById('inputAlamat').value.trim(),
+                tanggalISO: tgl,
+                tanggal: tgl ? parseISOLokal(tgl).toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) : '',
+                bank: document.getElementById('inputBank').value,
+                status: status,
+                dp: dp,
+                items: items,
+                total: total,
+                sphId: sphAsal ? sphAsal.id : null,
+                noSPH: sphAsal ? sphAsal.no : ''
+            });
+            localStorage.setItem('data_invoice', JSON.stringify(daftar));
+
+            // Invoice tersimpan: SPH asal resmi berstatus Deal
+            if (sphAsal) {
+                const sphList = DB_SPH();
+                const s = sphList.find(x => x.id === sphAsal.id);
+                if (s && s.status !== 'Deal') {
+                    s.status = 'Deal';
+                    s.tanggalKeputusan = tgl || hariIniISO();
+                    s.alasanBatal = '';
+                    localStorage.setItem('data_sph', JSON.stringify(sphList));
+                }
+            }
+            showToast("Invoice berhasil disimpan!", "success", 1200, () => {
+                window.location.href = 'riwayat-invoice.html';
+            });
+        }
+
+        muatDariSPH();
+        toggleDP();
+    
+        (function () {
+            const tgl = document.getElementById('inputTanggal'), no = document.getElementById('inputNoInvoice');
+            no.addEventListener('input', () => { nomorAuto = false; });      // diketik manual: jangan ditimpa
+            ['input', 'change'].forEach(ev => tgl.addEventListener(ev, () => { if (nomorAuto) generateNoInvoice(); }));
+            if (!no.value) generateNoInvoice();
+        })();
+    </script>
+</body>
+</html>
+

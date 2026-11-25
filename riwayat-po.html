@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat PO - Agung Jaya Listrik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-dark { background: #fff; border: 1px solid #e2e8f0; }
+        .hero-banner { background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #dc2626; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; width: 220px; border-radius: 0.75rem; box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.18); z-index: 50; background: #fff; border: 1px solid #e2e8f0; }
+        .group:hover .dropdown-menu { display: block; }
+        .glass-input { background: #fff; border: 1px solid #cbd5e1; color: #1e293b; }
+        .glass-input:focus { border-color: #dc2626; outline: none; }
+        .glass-input option { background: #fff; color: #1e293b; }
+        @media (max-width: 767px) {
+            .mobile-nav { scrollbar-width: none; }
+            .mobile-nav::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+    <!-- NAVBAR UTAMA -->
+    <header class="border-b border-slate-200 bg-white sticky top-0 z-50 px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-y-3">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1 border border-slate-200">
+                <img src="logoAJL.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm tracking-wide text-slate-900">Agung Jaya Listrik</h1>
+                <p class="text-[10px] text-slate-500">Invoice &amp; Dokumen</p>
+            </div>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+            <a href="dashboard.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Dashboard</a>
+            <a href="inventory.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Inventory</a>
+            <a href="jadwal.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Pengeluaran</a>
+            <a href="laporan.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Laporan</a>
+            
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+                    <span>Buat Dokumen</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Penawaran Harga</a>
+                    <a href="invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Invoice</a>
+                    <a href="surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Jalan</a>
+                    <a href="po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Purchase Order</a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md bg-red-50 text-red-700 font-semibold transition flex items-center space-x-1.5">
+                    <span>Riwayat</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="riwayat-sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat SPH</a>
+                    <a href="riwayat-invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Invoice</a>
+                    <a href="riwayat-surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Surat Jalan</a>
+                    <a href="riwayat-po.html" class="block px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Riwayat PO</a>
+                </div>
+            </div>
+        </nav>
+
+        <a href="logout.html" class="px-3 py-1.5 rounded-md border border-slate-200 text-xs text-slate-600 hover:text-red-700 hover:bg-red-50 flex items-center space-x-2">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+        </a>
+        <nav class="mobile-nav lg:hidden w-full overflow-x-auto flex items-center gap-1 border-t border-slate-100 pt-2 text-xs font-medium whitespace-nowrap">
+            <a href="dashboard.html" class="px-3 py-2 rounded-md text-slate-600">Dashboard</a>
+            <a href="inventory.html" class="px-3 py-2 rounded-md text-slate-600">Inventory</a>
+            <a href="jadwal.html" class="px-3 py-2 rounded-md text-slate-600">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3 py-2 rounded-md text-slate-600">Pengeluaran</a>
+            <a href="laporan.html" class="px-3 py-2 rounded-md text-slate-600">Laporan</a>
+            <a href="sph.html" class="px-3 py-2 rounded-md text-slate-600">Buat SPH</a>
+            <a href="invoice.html" class="px-3 py-2 rounded-md text-slate-600">Buat Invoice</a>
+            <a href="surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Surat Jalan</a>
+            <a href="po.html" class="px-3 py-2 rounded-md text-slate-600">Buat PO</a>
+            <a href="riwayat-sph.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat SPH</a>
+            <a href="riwayat-invoice.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Invoice</a>
+            <a href="riwayat-surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Surat Jalan</a>
+            <a href="riwayat-po.html" class="px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Riwayat PO</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Riwayat Purchase Order</h2>
+                <p id="jumlahData" class="text-xs text-slate-500 mt-1">Daftar seluruh purchase order ke pemasok</p>
+            </div>
+            <a href="po.html" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-xl text-xs font-semibold transition flex items-center space-x-2 shadow-sm self-start sm:self-auto">
+                <i class="fa-solid fa-plus"></i><span>Buat PO</span>
+            </a>
+        </div>
+
+        <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-magnifying-glass text-xs"></i></span>
+            <input type="text" id="inputCari" onkeyup="render()" placeholder="Cari nomor atau nama..." class="glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800">
+        </div>
+
+        <div class="card-dark rounded-xl overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-200 text-slate-500 uppercase text-[10px] tracking-wider bg-slate-50 font-semibold">
+                            <th class="py-3.5 px-6 w-12 text-center">#</th>
+                            <th class="py-3.5 px-6">No. PO</th>
+                            <th class="py-3.5 px-6">Vendor</th>
+                            <th class="py-3.5 px-6">Tanggal</th>
+                            <th class="py-3.5 px-6">Total</th>
+                            <th class="py-3.5 px-6 text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ===== Modern Toast & Modal Notifications =====
+        function showToast(pesan, tipe = 'success', durasi = 1300, onSelesai = null) {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'fixed top-6 right-6 z-[9999] flex flex-col gap-2.5 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            const isSuccess = tipe === 'success';
+            const isError = tipe === 'error';
+
+            const bgClass = isSuccess ? 'bg-emerald-600 text-white' : (isError ? 'bg-red-600 text-white' : 'bg-amber-500 text-white');
+            const iconClass = isSuccess ? 'fa-circle-check' : (isError ? 'fa-circle-xmark' : 'fa-triangle-exclamation');
+
+            toast.className = `flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl ${bgClass} text-xs font-semibold transform transition-all duration-300 translate-y-[-16px] opacity-0 pointer-events-auto border border-white/20 tracking-wide`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass} text-base"></i><span>${pesan}</span>`;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-[-16px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-16px]', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                    if (onSelesai) onSelesai();
+                }, 300);
+            }, durasi);
+        }
+
+        function showConfirmModal({ judul, pesan, icon = 'fa-circle-question', warnaIcon = 'text-red-600', teksOK = 'Ya, Lanjutkan', teksBatal = 'Batal', onConfirm, onCancel }) {
+            let modal = document.getElementById('customConfirmModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'customConfirmModal';
+                modal.className = 'fixed inset-0 z-[9999] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-200';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 transform transition-all duration-200 scale-95 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center ${warnaIcon} text-lg shrink-0">
+                            <i class="fa-solid ${icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">${judul}</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${pesan}</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+                        <button id="modalBtnBatal" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition border border-slate-200">${teksBatal}</button>
+                        <button id="modalBtnOK" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-red-600 hover:bg-red-700 transition shadow-sm">${teksOK}</button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+
+            document.getElementById('modalBtnBatal').onclick = () => {
+                modal.classList.add('hidden');
+                if (onCancel) onCancel();
+            };
+            document.getElementById('modalBtnOK').onclick = () => {
+                modal.classList.add('hidden');
+                if (onConfirm) onConfirm();
+            };
+        }
+
+        const KEY = 'data_po';
+        function getData() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+        function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c])); }
+        function rp(n) { return 'Rp ' + (Number(n) || 0).toLocaleString('id-ID'); }
+
+        function render() {
+            const kw = document.getElementById('inputCari').value.toLowerCase();
+            const data = getData().filter(i => String(i.no).toLowerCase().includes(kw) || String(i.perusahaan || i.vendor || '').toLowerCase().includes(kw));
+            document.getElementById('jumlahData').innerText = data.length + ' dokumen ditemukan';
+            const tb = document.getElementById('tabelBody');
+            if (!data.length) { tb.innerHTML = '<tr><td colspan="6" class="text-center py-10 text-slate-400">Belum ada data yang sesuai.</td></tr>'; return; }
+            tb.innerHTML = data.map((i, n) => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="py-3.5 px-6 text-center text-slate-400 font-mono">${n + 1}</td>
+                    <td class="py-3.5 px-6 font-bold text-slate-900 font-mono">${esc(i.no)}</td>
+                    <td class="py-3.5 px-6 font-semibold text-slate-900">${esc(i.vendor)}</td>
+                    <td class="py-3.5 px-6 text-slate-600">${esc(i.tanggal)}</td>
+                    <td class="py-3.5 px-6 font-bold text-slate-900 font-mono">${rp(i.total)}</td>
+                    <td class="py-3.5 px-6 text-center">
+                        <button onclick="hapusItem(${i.id})" class="text-slate-400 hover:text-red-600 p-1.5" title="Hapus"><i class="fa-solid fa-trash text-xs"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function hapusItem(id) {
+            showConfirmModal({
+                judul: 'Hapus Purchase Order?',
+                pesan: 'Dokumen PO ini akan dihapus dari riwayat transaksi.',
+                icon: 'fa-trash-can',
+                warnaIcon: 'text-red-600',
+                teksOK: 'Hapus',
+                onConfirm: () => {
+                    localStorage.setItem(KEY, JSON.stringify(getData().filter(i => i.id !== id)));
+                    render();
+                    showToast('Dokumen PO berhasil dihapus.', 'success', 1200);
+                }
+            });
+        }
+        
+        render();
+        window.addEventListener('pageshow', () => { render(); });
+    </script>
+</body>
+</html>
+

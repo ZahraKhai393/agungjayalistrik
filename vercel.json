@@ -1,0 +1,19 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/sph", "destination": "/sph.html" },
+    { "source": "/riwayat-sph", "destination": "/riwayat-sph.html" },
+    { "source": "/invoice", "destination": "/invoice.html" },
+    { "source": "/riwayat-invoice", "destination": "/riwayat-invoice.html" },
+    { "source": "/surat-jalan", "destination": "/surat-jalan.html" },
+    { "source": "/riwayat-surat-jalan", "destination": "/riwayat-surat-jalan.html" },
+    { "source": "/po", "destination": "/po.html" },
+    { "source": "/riwayat-po", "destination": "/riwayat-po.html" },
+    { "source": "/inventory", "destination": "/inventory.html" },
+    { "source": "/pengeluaran", "destination": "/pengeluaran.html" },
+    { "source": "/laporan", "destination": "/laporan.html" },
+    { "source": "/jadwal", "destination": "/jadwal.html" },
+    { "source": "/login", "destination": "/index.html" }
+  ]
+}

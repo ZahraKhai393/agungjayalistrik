@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1207.458 680.3" width="1207.458" height="680.3" style="--bg:#18181B;--fg:#F4F4F5;--line:#71717A;--muted:#A1A1AA;--surface:#27272A;--border:#3F3F46;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+</defs>
+<polyline class="er-relationship" data-entity1="SPH" data-entity2="INVOICE" data-cardinality1="one" data-cardinality2="zero-one" data-identifying="true" data-label="dikonversi menjadi" points="696.3019999999999,480.29999999999995 974.458,480.29999999999995" fill="none" stroke="var(--_line)" stroke-width="1" />
+<polyline class="er-relationship" data-entity1="INVENTORY" data-entity2="SPH" data-cardinality1="many" data-cardinality2="zero-many" data-identifying="true" data-label="dimuat dalam rincian" points="219.79999999999998,480.29999999999995 503.30199999999996,480.29999999999995" fill="none" stroke="var(--_line)" stroke-width="1" />
+<polyline class="er-relationship" data-entity1="INVENTORY" data-entity2="INVOICE" data-cardinality1="many" data-cardinality2="zero-many" data-identifying="true" data-label="tercantum dalam faktur" points="219.79999999999998,395.6333333333333 229.79999999999998,395.6333333333333 229.79999999999998,249.29999999999998 894.458,249.29999999999998 894.458,402.96666666666664 974.458,402.96666666666664" fill="none" stroke="var(--_line)" stroke-width="1" />
+<g class="entity" data-id="USERS" data-label="USERS">
+  <rect x="40" y="40" width="160" height="144" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="40" width="160" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="120" y="57" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">USERS</text>
+  <line x1="40" y1="74" x2="200" y2="74" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <rect x="46" y="78" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="57.155" y="85" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="76.31" y="85" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="192" y="85" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  <text x="48" y="107" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="192" y="107" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">username</tspan></text>
+  <text x="48" y="129" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="192" y="129" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">password</tspan></text>
+  <text x="48" y="151" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="192" y="151" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">nama_lengkap</tspan></text>
+  <text x="48" y="173" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="192" y="173" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">role</tspan></text>
+</g>
+<g class="entity" data-id="INVENTORY" data-label="INVENTORY">
+  <rect x="40" y="310.96666666666664" width="179.79999999999998" height="254" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="310.96666666666664" width="179.79999999999998" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="129.89999999999998" y="327.96666666666664" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">INVENTORY</text>
+  <line x1="40" y1="344.96666666666664" x2="219.79999999999998" y2="344.96666666666664" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <rect x="46" y="348.96666666666664" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="57.155" y="355.96666666666664" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="76.31" y="355.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="211.79999999999998" y="355.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  <rect x="46" y="370.96666666666664" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="57.155" y="377.96666666666664" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">UK</text>
+  <text x="76.31" y="377.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="211.79999999999998" y="377.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">kode_barang</tspan></text>
+  <text x="48" y="399.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="211.79999999999998" y="399.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">nama_barang</tspan></text>
+  <text x="48" y="421.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="211.79999999999998" y="421.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">kategori</tspan></text>
+  <text x="48" y="443.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="211.79999999999998" y="443.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">stok</tspan></text>
+  <text x="48" y="465.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="211.79999999999998" y="465.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">min_stok</tspan></text>
+  <text x="48" y="487.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">decimal</tspan></text>
+  <text x="211.79999999999998" y="487.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">harga_modal</tspan></text>
+  <text x="48" y="509.96666666666664" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">decimal</tspan></text>
+  <text x="211.79999999999998" y="509.96666666666664" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">harga_jual</tspan></text>
+  <text x="48" y="531.9666666666667" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="211.79999999999998" y="531.9666666666667" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">satuan</tspan></text>
+  <text x="48" y="553.9666666666667" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="211.79999999999998" y="553.9666666666667" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">lokasi_rak</tspan></text>
+</g>
+<g class="entity" data-id="SPH" data-label="SPH">
+  <rect x="503.30199999999996" y="320.29999999999995" width="193" height="320" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="503.30199999999996" y="320.29999999999995" width="193" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="599.8019999999999" y="337.29999999999995" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">SPH</text>
+  <line x1="503.30199999999996" y1="354.29999999999995" x2="696.3019999999999" y2="354.29999999999995" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <rect x="509.30199999999996" y="358.29999999999995" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="520.457" y="365.29999999999995" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="539.612" y="365.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="365.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  <rect x="509.30199999999996" y="380.29999999999995" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="520.457" y="387.29999999999995" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">UK</text>
+  <text x="539.612" y="387.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="688.3019999999999" y="387.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">no_sph</tspan></text>
+  <text x="511.30199999999996" y="409.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">date</tspan></text>
+  <text x="688.3019999999999" y="409.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">tanggal</tspan></text>
+  <text x="511.30199999999996" y="431.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="688.3019999999999" y="431.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">klien</tspan></text>
+  <text x="511.30199999999996" y="453.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="688.3019999999999" y="453.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">kategori_klien</tspan></text>
+  <text x="511.30199999999996" y="475.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">decimal</tspan></text>
+  <text x="688.3019999999999" y="475.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">nilai_sph</tspan></text>
+  <text x="511.30199999999996" y="497.29999999999995" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="497.29999999999995" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">jumlah_item</tspan></text>
+  <text x="511.30199999999996" y="519.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="519.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">diskon_persen</tspan></text>
+  <text x="511.30199999999996" y="541.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="541.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">lama_tunggu_hari</tspan></text>
+  <text x="511.30199999999996" y="563.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="563.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">jumlah_followup</tspan></text>
+  <text x="511.30199999999996" y="585.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="688.3019999999999" y="585.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">histori_repeat_order</tspan></text>
+  <text x="511.30199999999996" y="607.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="688.3019999999999" y="607.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">status</tspan></text>
+  <text x="511.30199999999996" y="629.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="688.3019999999999" y="629.3" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">alasan_batal</tspan></text>
+</g>
+<g class="entity" data-id="INVOICE" data-label="INVOICE">
+  <rect x="974.458" y="325.6333333333333" width="193" height="232" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="974.458" y="325.6333333333333" width="193" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1070.958" y="342.6333333333333" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">INVOICE</text>
+  <line x1="974.458" y1="359.6333333333333" x2="1167.458" y2="359.6333333333333" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <rect x="980.458" y="363.6333333333333" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="991.6129999999999" y="370.6333333333333" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="1010.7679999999999" y="370.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="1159.458" y="370.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  <rect x="980.458" y="385.6333333333333" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="991.6129999999999" y="392.6333333333333" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">UK</text>
+  <text x="1010.7679999999999" y="392.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="1159.458" y="392.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">no_invoice</tspan></text>
+  <text x="982.458" y="414.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="1159.458" y="414.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">no_sph_ref</tspan></text>
+  <text x="982.458" y="436.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">date</tspan></text>
+  <text x="1159.458" y="436.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">tanggal</tspan></text>
+  <text x="982.458" y="458.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">date</tspan></text>
+  <text x="1159.458" y="458.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">jatuh_tempo</tspan></text>
+  <text x="982.458" y="480.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="1159.458" y="480.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">klien</tspan></text>
+  <text x="982.458" y="502.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">decimal</tspan></text>
+  <text x="1159.458" y="502.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">total_tagihan</tspan></text>
+  <text x="982.458" y="524.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="1159.458" y="524.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">status_pembayaran</tspan></text>
+  <text x="982.458" y="546.6333333333333" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="1159.458" y="546.6333333333333" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">metode_pembayaran</tspan></text>
+</g>
+<g class="entity" data-id="PENGELUARAN" data-label="PENGELUARAN">
+  <rect x="220" y="40" width="153.39999999999998" height="166" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="220" y="40" width="153.39999999999998" height="34" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="296.7" y="57" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PENGELUARAN</text>
+  <line x1="220" y1="74" x2="373.4" y2="74" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <rect x="226" y="78" width="22.31" height="14" rx="2" ry="2" fill="var(--_key-badge)" />
+  <text x="237.155" y="85" text-anchor="middle" dy="0.35em" font-size="9" font-weight="600" fill="var(--_text-sec)">PK</text>
+  <text x="256.31" y="85" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="365.4" y="85" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">id</tspan></text>
+  <text x="228" y="107" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">date</tspan></text>
+  <text x="365.4" y="107" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">tanggal</tspan></text>
+  <text x="228" y="129" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="365.4" y="129" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">kategori</tspan></text>
+  <text x="228" y="151" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="365.4" y="151" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">keterangan</tspan></text>
+  <text x="228" y="173" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">decimal</tspan></text>
+  <text x="365.4" y="173" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">jumlah</tspan></text>
+  <text x="228" y="195" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-muted)">string</tspan></text>
+  <text x="365.4" y="195" class="mono" text-anchor="end" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">sumber_dana</tspan></text>
+</g>
+<line x1="700.3019999999999" y1="474.29999999999995" x2="700.3019999999999" y2="486.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="704.3019999999999" y1="474.29999999999995" x2="704.3019999999999" y2="486.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="970.458" y1="486.29999999999995" x2="970.458" y2="474.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="966.458" y1="486.29999999999995" x2="966.458" y2="474.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="962.458" cy="480.29999999999995" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="473.29999999999995" x2="235.79999999999998" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="480.29999999999995" x2="235.79999999999998" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="487.29999999999995" x2="235.79999999999998" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="499.30199999999996" y1="487.29999999999995" x2="487.30199999999996" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="499.30199999999996" y1="480.29999999999995" x2="487.30199999999996" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="499.30199999999996" y1="473.29999999999995" x2="487.30199999999996" y2="480.29999999999995" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="483.30199999999996" cy="480.29999999999995" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="388.6333333333333" x2="235.79999999999998" y2="395.6333333333333" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="395.6333333333333" x2="235.79999999999998" y2="395.6333333333333" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="223.79999999999998" y1="402.6333333333333" x2="235.79999999999998" y2="395.6333333333333" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="970.458" y1="409.96666666666664" x2="958.458" y2="402.96666666666664" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="970.458" y1="402.96666666666664" x2="958.458" y2="402.96666666666664" stroke="var(--_line)" stroke-width="1.25" />
+<line x1="970.458" y1="395.96666666666664" x2="958.458" y2="402.96666666666664" stroke="var(--_line)" stroke-width="1.25" />
+<circle cx="954.458" cy="402.96666666666664" r="4" fill="var(--bg)" stroke="var(--_line)" stroke-width="1.25" />
+<rect x="786.3019999999999" y="470.15" width="98.15600000000002" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="835.3799999999999" y="480.29999999999995" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">dikonversi menjadi</text>
+<rect x="309.7999999999999" y="470.15" width="103.50200000000002" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="361.55099999999993" y="480.29999999999995" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">dimuat dalam rincian</text>
+<rect x="543.6986666666666" y="239.14999999999998" width="114.19400000000005" height="20.3" rx="2" ry="2" fill="var(--bg)" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="600.7956666666665" y="249.29999999999998" text-anchor="middle" font-size="11" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">tercantum dalam faktur</text>
+</svg>

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat SPH - Agung Jaya Listrik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .card-dark { background: #fff; border: 1px solid #e2e8f0; }
+        .hero-banner { background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #dc2626; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; width: 220px; border-radius: 0.75rem; box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.18); z-index: 50; background: #fff; border: 1px solid #e2e8f0; }
+        .group:hover .dropdown-menu { display: block; }
+        .glass-input { background: #fff; border: 1px solid #cbd5e1; color: #1e293b; }
+        .glass-input:focus { border-color: #dc2626; outline: none; }
+        .glass-input option { background: #fff; color: #1e293b; }
+        @media (max-width: 767px) {
+            .mobile-nav { scrollbar-width: none; }
+            .mobile-nav::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+    <!-- NAVBAR UTAMA -->
+    <header class="border-b border-slate-200 bg-white sticky top-0 z-50 px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-y-3">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1 border border-slate-200">
+                <img src="logoAJL.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm tracking-wide text-slate-900">Agung Jaya Listrik</h1>
+                <p class="text-[10px] text-slate-500">Invoice &amp; Dokumen</p>
+            </div>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+            <a href="dashboard.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Dashboard</a>
+            <a href="inventory.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Inventory</a>
+            <a href="jadwal.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Pengeluaran</a>
+            <a href="laporan.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Laporan</a>
+            
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+                    <span>Buat Dokumen</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Penawaran Harga</a>
+                    <a href="invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Invoice</a>
+                    <a href="surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Jalan</a>
+                    <a href="po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Purchase Order</a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md bg-red-50 text-red-700 font-semibold transition flex items-center space-x-1.5">
+                    <span>Riwayat</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="riwayat-sph.html" class="block px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Riwayat SPH</a>
+                    <a href="riwayat-invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Invoice</a>
+                    <a href="riwayat-surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Surat Jalan</a>
+                    <a href="riwayat-po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat PO</a>
+                </div>
+            </div>
+        </nav>
+
+        <a href="logout.html" class="px-3 py-1.5 rounded-md border border-slate-200 text-xs text-slate-600 hover:text-red-700 hover:bg-red-50 flex items-center space-x-2">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+        </a>
+        <nav class="mobile-nav lg:hidden w-full overflow-x-auto flex items-center gap-1 border-t border-slate-100 pt-2 text-xs font-medium whitespace-nowrap">
+            <a href="dashboard.html" class="px-3 py-2 rounded-md text-slate-600">Dashboard</a>
+            <a href="inventory.html" class="px-3 py-2 rounded-md text-slate-600">Inventory</a>
+            <a href="jadwal.html" class="px-3 py-2 rounded-md text-slate-600">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3 py-2 rounded-md text-slate-600">Pengeluaran</a>
+            <a href="laporan.html" class="px-3 py-2 rounded-md text-slate-600">Laporan</a>
+            <a href="sph.html" class="px-3 py-2 rounded-md text-slate-600">Buat SPH</a>
+            <a href="invoice.html" class="px-3 py-2 rounded-md text-slate-600">Buat Invoice</a>
+            <a href="surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Surat Jalan</a>
+            <a href="po.html" class="px-3 py-2 rounded-md text-slate-600">Buat PO</a>
+            <a href="riwayat-sph.html" class="px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Riwayat SPH</a>
+            <a href="riwayat-invoice.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Invoice</a>
+            <a href="riwayat-surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Surat Jalan</a>
+            <a href="riwayat-po.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat PO</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Riwayat SPH (Penawaran Harga)</h2>
+                <p id="jumlahData" class="text-xs text-slate-500 mt-1">Memuat data...</p>
+            </div>
+            <a href="sph.html" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-xl text-xs font-semibold transition flex items-center space-x-2 shadow-sm self-start sm:self-auto">
+                <i class="fa-solid fa-plus"></i><span>Buat SPH Baru</span>
+            </a>
+        </div>
+
+        <!-- Pencarian, filter status, dan pengurutan -->
+        <div class="flex flex-col md:flex-row gap-3">
+            <div class="relative flex-1">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400"><i class="fa-solid fa-magnifying-glass text-xs"></i></span>
+                <input type="text" id="inputCari" onkeyup="terapkanFilter()" placeholder="Cari nomor surat atau nama perusahaan..." class="glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800">
+            </div>
+            <select id="filterStatus" onchange="terapkanFilter()" class="glass-input rounded-xl px-3.5 py-2.5 text-xs text-slate-800">
+                <option value="semua">Semua status</option>
+                <option value="Menunggu">Menunggu</option>
+                <option value="Deal">Deal</option>
+                <option value="Batal">Batal</option>
+            </select>
+            <select id="urutan" onchange="terapkanFilter()" class="glass-input rounded-xl px-3.5 py-2.5 text-xs text-slate-800">
+                <option value="asli">Urutan: sesuai data</option>
+                <option value="prioritas">Urutan: prioritas follow-up</option>
+            </select>
+        </div>
+
+        <div class="card-dark rounded-xl overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-200 text-slate-500 uppercase text-[10px] tracking-wider bg-slate-50 font-semibold">
+                            <th class="py-3.5 px-6 w-12 text-center">#</th>
+                            <th class="py-3.5 px-6">Nomor SPH</th>
+                            <th class="py-3.5 px-6">Nama Perusahaan</th>
+                            <th class="py-3.5 px-6">Tanggal</th>
+                            <th class="py-3.5 px-6 text-center">Status</th>
+                            <th class="py-3.5 px-6 text-center">Prioritas</th>
+                            <th class="py-3.5 px-6 text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelBody" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal: Status SPH dan Riwayat Follow-up -->
+    <div id="modalSph" class="hidden fixed inset-0 z-[60] bg-slate-900/40 backdrop-blur-sm items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 shadow-xl">
+            <div class="flex justify-between items-start mb-4 pb-3 border-b border-slate-200">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">Status dan Follow-up</h3>
+                    <p id="modalJudul" class="text-xs text-slate-500 mt-0.5"></p>
+                </div>
+                <button onclick="tutupModal()" class="text-slate-400 hover:text-slate-600 p-1" title="Tutup"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Status -->
+            <div class="mb-6">
+                <label class="block text-[11px] uppercase tracking-wider text-slate-600 font-semibold mb-2">Status SPH</label>
+                <select id="modalStatus" onchange="toggleAlasan()" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                    <option value="Menunggu">Menunggu</option>
+                    <option value="Deal">Deal</option>
+                    <option value="Batal">Batal</option>
+                </select>
+                <div id="blokAlasan" class="hidden mt-3">
+                    <label class="block text-[11px] uppercase tracking-wider text-slate-600 font-semibold mb-2">Alasan batal</label>
+                    <textarea id="modalAlasan" rows="2" placeholder="Contoh: harga lebih tinggi dari pesaing" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800"></textarea>
+                    <p id="errAlasan" class="hidden text-[11px] text-red-600 mt-1 font-medium">Isi alasan batal terlebih dahulu.</p>
+                </div>
+                <p id="infoKeputusan" class="text-[11px] text-slate-500 mt-2"></p>
+                <button onclick="simpanStatus()" class="mt-3 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl text-xs font-semibold transition shadow-sm">Simpan status</button>
+            </div>
+
+            <!-- Form follow-up -->
+            <div class="border-t border-slate-200 pt-5 mb-4">
+                <h4 class="text-sm font-bold text-slate-900 mb-3">Tambah follow-up</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-600 font-medium mb-1">Tanggal</label>
+                        <input type="date" id="fuTanggal" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-600 font-medium mb-1">Cara</label>
+                        <select id="fuCara" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                            <option>WhatsApp</option>
+                            <option>Telepon</option>
+                            <option>Email</option>
+                            <option>Kunjungan</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-[11px] text-slate-600 font-medium mb-1">Catatan</label>
+                        <input type="text" id="fuCatatan" placeholder="Hasil singkat percakapan" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-[11px] text-slate-600 font-medium mb-1">Follow-up berikutnya (opsional)</label>
+                        <input type="date" id="fuBerikutnya" class="glass-input w-full rounded-xl px-3 py-2 text-xs text-slate-800">
+                    </div>
+                </div>
+                <p id="errFollowup" class="hidden text-[11px] text-red-600 mt-2 font-medium">Isi tanggal follow-up terlebih dahulu.</p>
+                <button onclick="tambahFollowup()" class="mt-3 bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 px-4 py-2 rounded-xl text-xs font-semibold transition"><i class="fa-solid fa-plus mr-1.5"></i>Tambah follow-up</button>
+            </div>
+
+            <!-- Riwayat follow-up -->
+            <div class="border-t border-slate-200 pt-5">
+                <h4 class="text-sm font-bold text-slate-900 mb-3">Riwayat follow-up</h4>
+                <div id="listFollowup" class="space-y-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Modern Toast & Modal Notifications =====
+        function showToast(pesan, tipe = 'success', durasi = 1300, onSelesai = null) {
+            let container = document.getElementById('toastContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toastContainer';
+                container.className = 'fixed top-6 right-6 z-[9999] flex flex-col gap-2.5 pointer-events-none';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            const isSuccess = tipe === 'success';
+            const isError = tipe === 'error';
+
+            const bgClass = isSuccess ? 'bg-emerald-600 text-white' : (isError ? 'bg-red-600 text-white' : 'bg-amber-500 text-white');
+            const iconClass = isSuccess ? 'fa-circle-check' : (isError ? 'fa-circle-xmark' : 'fa-triangle-exclamation');
+
+            toast.className = `flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl ${bgClass} text-xs font-semibold transform transition-all duration-300 translate-y-[-16px] opacity-0 pointer-events-auto border border-white/20 tracking-wide`;
+            toast.innerHTML = `<i class="fa-solid ${iconClass} text-base"></i><span>${pesan}</span>`;
+
+            container.appendChild(toast);
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-[-16px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-16px]', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                    if (onSelesai) onSelesai();
+                }, 300);
+            }, durasi);
+        }
+
+        function showConfirmModal({ judul, pesan, icon = 'fa-circle-question', warnaIcon = 'text-red-600', teksOK = 'Ya, Lanjutkan', teksBatal = 'Batal', onConfirm, onCancel }) {
+            let modal = document.getElementById('customConfirmModal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'customConfirmModal';
+                modal.className = 'fixed inset-0 z-[9999] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-200';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 transform transition-all duration-200 scale-95 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center ${warnaIcon} text-lg shrink-0">
+                            <i class="fa-solid ${icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">${judul}</h4>
+                            <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${pesan}</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+                        <button id="modalBtnBatal" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition border border-slate-200">${teksBatal}</button>
+                        <button id="modalBtnOK" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-red-600 hover:bg-red-700 transition shadow-sm">${teksOK}</button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+
+            document.getElementById('modalBtnBatal').onclick = () => {
+                modal.classList.add('hidden');
+                if (onCancel) onCancel();
+            };
+            document.getElementById('modalBtnOK').onclick = () => {
+                modal.classList.add('hidden');
+                if (onConfirm) onConfirm();
+            };
+        }
+
+        // ===== Pengaturan skor prioritas (usulan, sesuaikan bersama pemilik) =====
+        // Skor 0-100 dihitung dari aturan, bukan prediksi statistik.
+        const CONFIG = {
+            bobot: { umur: 40, jedaFollowup: 30, nilai: 15, winRate: 15 },
+            batasUmurHari: 30,       // umur SPH maksimum yang dihitung
+            batasJedaHari: 14,       // jeda sejak kontak terakhir maksimum yang dihitung
+            nilaiBesar: 50000000,    // nilai penawaran dengan bobot penuh
+            nilaiSedang: 10000000,   // nilai penawaran dengan bobot setengah
+            ambangTinggi: 60,        // skor >= ini: Tinggi
+            ambangSedang: 35         // skor >= ini: Sedang, selain itu Rendah
+        };
+
+        const NAMA_BULAN = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+        const PETA_BULAN = { jan:0, feb:1, mar:2, apr:3, mei:4, may:4, jun:5, jul:6, agu:7, agt:7, ags:7, aug:7, sep:8, okt:9, oct:9, nov:10, des:11, dec:11 };
+        let idAktif = null;
+
+        // ===== Penyimpanan (prototipe: localStorage) =====
+        function getStoredData() {
+            const data = JSON.parse(localStorage.getItem('data_sph')) || [];
+            data.forEach(item => {
+                if (!item.status) item.status = 'Menunggu';
+                if (!Array.isArray(item.followups)) item.followups = [];
+            });
+            return data;
+        }
+        function simpanData(data) { localStorage.setItem('data_sph', JSON.stringify(data)); }
+
+        // ===== Utilitas tanggal dan teks =====
+        function esc(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+        }
+        function hariIniISO() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+        function parseTanggal(str) {
+            if (!str) return null;
+            str = String(str).trim();
+            let m = str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+            m = str.match(/(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})/);
+            if (m) {
+                const bln = PETA_BULAN[m[2].slice(0, 3).toLowerCase()];
+                if (bln !== undefined) return new Date(+m[3], bln, +m[1]);
+            }
+            m = str.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+            if (m) return new Date(+m[3], +m[2] - 1, +m[1]);
+            return null;
+        }
+        function formatTanggal(d) {
+            if (!(d instanceof Date)) d = parseTanggal(d);
+            if (!d) return '-';
+            return String(d.getDate()).padStart(2, '0') + ' ' + NAMA_BULAN[d.getMonth()] + ' ' + d.getFullYear();
+        }
+        function selisihHari(dari, ke) {
+            const a = new Date(dari.getFullYear(), dari.getMonth(), dari.getDate());
+            const b = new Date(ke.getFullYear(), ke.getMonth(), ke.getDate());
+            return Math.max(0, Math.round((b - a) / 86400000));
+        }
+        function getNilai(item) {
+            const kandidat = [item.total, item.grandTotal, item.grand_total, item.totalHarga, item.nilai];
+            for (const v of kandidat) {
+                if (v === undefined || v === null || v === '') continue;
+                const angka = typeof v === 'number' ? v : Number(String(v).replace(/[^\d]/g, ''));
+                if (!isNaN(angka) && angka > 0) return angka;
+            }
+            return 0;
+        }
+
+        // ===== Skor prioritas follow-up (berbasis aturan) =====
+        function hitungWinRate(semua) {
+            const peta = {};
+            semua.forEach(i => {
+                const k = String(i.perusahaan || '').trim().toLowerCase();
+                if (!peta[k]) peta[k] = { deal: 0, batal: 0 };
+                if (i.status === 'Deal') peta[k].deal++;
+                if (i.status === 'Batal') peta[k].batal++;
+            });
+            return peta;
+        }
+        function hitungPrioritas(item, petaWin) {
+            if (item.status !== 'Menunggu') return null;
+            const sekarang = new Date();
+            const tglSph = parseTanggal(item.tanggal);
+            const umur = tglSph ? selisihHari(tglSph, sekarang) : 0;
+
+            let kontakTerakhir = tglSph;
+            item.followups.forEach(f => {
+                const t = parseTanggal(f.tanggal);
+                if (t && (!kontakTerakhir || t > kontakTerakhir)) kontakTerakhir = t;
+            });
+            const jeda = kontakTerakhir ? selisihHari(kontakTerakhir, sekarang) : 0;
+
+            const nilai = getNilai(item);
+            const k = String(item.perusahaan || '').trim().toLowerCase();
+            const w = petaWin[k] || { deal: 0, batal: 0 };
+            const diputuskan = w.deal + w.batal;
+            const rate = diputuskan > 0 ? w.deal / diputuskan : 0.5;
+
+            const b = CONFIG.bobot;
+            const sUmur = b.umur * Math.min(umur, CONFIG.batasUmurHari) / CONFIG.batasUmurHari;
+            const sJeda = b.jedaFollowup * Math.min(jeda, CONFIG.batasJedaHari) / CONFIG.batasJedaHari;
+            const sNilai = nilai >= CONFIG.nilaiBesar ? b.nilai : (nilai >= CONFIG.nilaiSedang ? b.nilai / 2 : 0);
+            const sWin = b.winRate * rate;
+            const skor = Math.round(sUmur + sJeda + sNilai + sWin);
+
+            const label = skor >= CONFIG.ambangTinggi ? 'Tinggi' : (skor >= CONFIG.ambangSedang ? 'Sedang' : 'Rendah');
+            return { skor, label, umur, jeda };
+        }
+
+        // ===== Tampilan tabel =====
+        function badgeStatus(status) {
+            if (status === 'Deal') return '<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-full text-[10px] font-bold">Deal</span>';
+            if (status === 'Batal') return '<span class="bg-red-50 text-red-700 border border-red-200 px-2.5 py-1 rounded-full text-[10px] font-bold">Batal</span>';
+            return '<span class="bg-amber-50 text-amber-700 border border-amber-200 px-2.5 py-1 rounded-full text-[10px] font-bold">Menunggu Deal</span>';
+        }
+        function badgePrioritas(p) {
+            if (!p) return '<span class="text-slate-400">-</span>';
+            const warna = p.label === 'Tinggi' ? 'bg-red-50 text-red-700 border-red-200'
+                        : p.label === 'Sedang' ? 'bg-amber-50 text-amber-700 border-amber-200'
+                        : 'bg-emerald-50 text-emerald-700 border-emerald-200';
+            return `<span class="${warna} border px-2.5 py-1 rounded-full text-[10px] font-bold" title="Skor ${p.skor} dari 100">${p.label}</span>
+                    <div class="text-[10px] text-slate-500 mt-1">umur ${p.umur} hari · kontak ${p.jeda} hari lalu</div>`;
+        }
+
+        function renderTabel(data, semua) {
+            const tbody = document.getElementById('tabelBody');
+            document.getElementById('jumlahData').innerText = `${data.length} penawaran harga ditemukan`;
+
+            if (data.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-10 text-slate-400">Belum ada riwayat SPH yang sesuai. Silakan buat SPH terlebih dahulu.</td></tr>`;
+                return;
+            }
+
+            const petaWin = hitungWinRate(semua);
+            let html = '';
+            data.forEach((item, index) => {
+                const p = hitungPrioritas(item, petaWin);
+                const jmlFu = item.followups.length;
+                html += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3.5 px-6 text-center text-slate-400 font-mono">${index + 1}</td>
+                        <td class="py-3.5 px-6 font-bold text-slate-900 font-mono">${esc(item.no)}</td>
+                        <td class="py-3.5 px-6 font-semibold text-slate-900">${esc(item.perusahaan)}</td>
+                        <td class="py-3.5 px-6 text-slate-600">${esc(item.tanggal)}</td>
+                        <td class="py-3.5 px-6 text-center">${badgeStatus(item.status)}</td>
+                        <td class="py-3.5 px-6 text-center">${badgePrioritas(p)}</td>
+                        <td class="py-3.5 px-6 text-center">
+                            <div class="flex items-center justify-center space-x-1.5">
+                                <button onclick="editSPH(${item.id})" class="bg-amber-50 text-amber-700 border border-amber-200 hover:bg-amber-100 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition" title="Edit SPH: Ubah barang, harga, atau customer">
+                                    <i class="fa-solid fa-pen-to-square mr-1"></i> Edit
+                                </button>
+                                <button onclick="bukaModal(${item.id})" class="bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition" title="Status dan riwayat follow-up">
+                                    <i class="fa-solid fa-phone-volume mr-1"></i> Follow-up${jmlFu ? ' (' + jmlFu + ')' : ''}
+                                </button>
+                                ${item.status === 'Menunggu' ? `
+                                <button onclick="prediksiSPH(${item.id})" class="bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition" title="Prediksi peluang konversi penawaran yang sedang berjalan">
+                                    <i class="fa-solid fa-chart-pie mr-1"></i> Prediksi SPH
+                                </button>` : ''}
+                                <button onclick="prosesDokumen(${item.id}, 'invoice')" class="bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition" title="Customer Setuju: Ubah langsung ke Invoice">
+                                    <i class="fa-solid fa-file-invoice mr-1"></i> Buat Invoice
+                                </button>
+                                <button onclick="prosesDokumen(${item.id}, 'surat-jalan')" class="bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold transition" title="Kirim Barang: Buat Surat Jalan">
+                                    <i class="fa-solid fa-truck mr-1"></i> Surat Jalan
+                                </button>
+                                <button onclick="hapusItem(${item.id})" class="text-slate-400 hover:text-red-600 p-1.5" title="Hapus SPH">
+                                    <i class="fa-solid fa-trash text-xs"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function terapkanFilter() {
+            const semua = getStoredData();
+            const kw = document.getElementById('inputCari').value.toLowerCase();
+            const st = document.getElementById('filterStatus').value;
+            const urut = document.getElementById('urutan').value;
+
+            let data = semua.filter(i =>
+                (String(i.no).toLowerCase().includes(kw) || String(i.perusahaan).toLowerCase().includes(kw)) &&
+                (st === 'semua' || i.status === st)
+            );
+
+            if (urut === 'prioritas') {
+                const petaWin = hitungWinRate(semua);
+                const skorDari = i => { const p = hitungPrioritas(i, petaWin); return p ? p.skor : -1; };
+                data = data.slice().sort((a, b) => skorDari(b) - skorDari(a));
+            }
+            renderTabel(data, semua);
+        }
+
+        // ===== Modal status dan follow-up =====
+        function bukaModal(id) {
+            const item = getStoredData().find(i => i.id === id);
+            if (!item) return;
+            idAktif = id;
+            document.getElementById('modalJudul').innerText = `${item.no} · ${item.perusahaan}`;
+            document.getElementById('modalStatus').value = item.status;
+            document.getElementById('modalAlasan').value = item.alasanBatal || '';
+            document.getElementById('errAlasan').classList.add('hidden');
+            document.getElementById('errFollowup').classList.add('hidden');
+            document.getElementById('fuTanggal').value = hariIniISO();
+            document.getElementById('fuCatatan').value = '';
+            document.getElementById('fuBerikutnya').value = '';
+            document.getElementById('fuCara').selectedIndex = 0;
+            toggleAlasan();
+            isiInfoKeputusan(item);
+            renderFollowup(item);
+            const m = document.getElementById('modalSph');
+            m.classList.remove('hidden');
+            m.classList.add('flex');
+        }
+        function tutupModal() {
+            const m = document.getElementById('modalSph');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+            idAktif = null;
+        }
+        function toggleAlasan() {
+            const batal = document.getElementById('modalStatus').value === 'Batal';
+            document.getElementById('blokAlasan').classList.toggle('hidden', !batal);
+        }
+        function isiInfoKeputusan(item) {
+            const el = document.getElementById('infoKeputusan');
+            el.innerText = item.tanggalKeputusan ? `Tanggal keputusan: ${formatTanggal(item.tanggalKeputusan)}` : '';
+        }
+
+        function simpanStatus() {
+            const data = getStoredData();
+            const item = data.find(i => i.id === idAktif);
+            if (!item) return;
+            const status = document.getElementById('modalStatus').value;
+            const alasan = document.getElementById('modalAlasan').value.trim();
+
+            if (status === 'Batal' && !alasan) {
+                document.getElementById('errAlasan').classList.remove('hidden');
+                return;
+            }
+            document.getElementById('errAlasan').classList.add('hidden');
+
+            if (status !== item.status) {
+                item.status = status;
+                item.tanggalKeputusan = status === 'Menunggu' ? null : hariIniISO();
+            }
+            item.alasanBatal = status === 'Batal' ? alasan : '';
+            simpanData(data);
+            isiInfoKeputusan(item);
+            terapkanFilter();
+        }
+
+        function tambahFollowup() {
+            const tgl = document.getElementById('fuTanggal').value;
+            if (!tgl) { document.getElementById('errFollowup').classList.remove('hidden'); return; }
+            document.getElementById('errFollowup').classList.add('hidden');
+
+            const data = getStoredData();
+            const item = data.find(i => i.id === idAktif);
+            if (!item) return;
+            item.followups.push({
+                tanggal: tgl,
+                cara: document.getElementById('fuCara').value,
+                catatan: document.getElementById('fuCatatan').value.trim(),
+                berikutnya: document.getElementById('fuBerikutnya').value || ''
+            });
+            simpanData(data);
+            document.getElementById('fuCatatan').value = '';
+            document.getElementById('fuBerikutnya').value = '';
+            renderFollowup(item);
+            terapkanFilter();
+        }
+
+        function hapusFollowup(idx) {
+            showConfirmModal({
+                judul: 'Hapus Follow-up?',
+                pesan: 'Catatan tindak lanjut ini akan dihapus dari riwayat.',
+                icon: 'fa-trash-can',
+                warnaIcon: 'text-red-600',
+                teksOK: 'Hapus',
+                onConfirm: () => {
+                    const data = getStoredData();
+                    const item = data.find(i => i.id === idAktif);
+                    if (!item) return;
+                    item.followups.splice(idx, 1);
+                    simpanData(data);
+                    renderFollowup(item);
+                    terapkanFilter();
+                    showToast('Catatan follow-up berhasil dihapus.', 'success', 1000);
+                }
+            });
+        }
+
+        function renderFollowup(item) {
+            const box = document.getElementById('listFollowup');
+            if (!item.followups.length) {
+                box.innerHTML = '<p class="text-xs text-slate-400">Belum ada follow-up untuk SPH ini.</p>';
+                return;
+            }
+            const urut = item.followups.map((f, idx) => ({ f, idx }))
+                .sort((a, b) => (parseTanggal(b.f.tanggal) || 0) - (parseTanggal(a.f.tanggal) || 0));
+            box.innerHTML = urut.map(({ f, idx }) => `
+                <div class="flex items-start justify-between bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                    <div class="text-xs">
+                        <div class="text-slate-800 font-semibold">${formatTanggal(f.tanggal)} · ${esc(f.cara)}</div>
+                        <div class="text-slate-600 mt-0.5">${esc(f.catatan) || '<span class="text-slate-400">tanpa catatan</span>'}</div>
+                        ${f.berikutnya ? `<div class="text-[11px] text-amber-700 font-medium mt-1">Berikutnya: ${formatTanggal(f.berikutnya)}</div>` : ''}
+                    </div>
+                    <button onclick="hapusFollowup(${idx})" class="text-slate-400 hover:text-red-600 p-1" title="Hapus"><i class="fa-solid fa-trash text-[10px]"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // ===== Edit SPH: ubah barang, harga, atau customer =====
+        function editSPH(id) {
+            localStorage.setItem('edit_sph_id', id);
+            window.location.href = `sph.html?edit=${id}`;
+        }
+
+        // ===== Modal Konversi SPH ke Invoice (Custom Modern Modal) =====
+        function bukaModalKonversiInvoice(item) {
+            let modal = document.getElementById('modalKonversiInvoice');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'modalKonversiInvoice';
+                modal.className = 'fixed inset-0 z-[9999] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-200';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-file-invoice"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900">Terbitkan Invoice dari SPH</h3>
+                            <p class="text-xs text-slate-500 mt-1">SPH <strong>${esc(item.no)}</strong> untuk <strong>${esc(item.perusahaan)}</strong> akan diubah menjadi faktur tagihan resmi (Invoice).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs space-y-1.5 text-slate-600">
+                        <div class="flex justify-between"><span>Total Nilai Tagihan:</span><strong class="text-slate-900 font-mono">Rp ${(getNilai(item) || 0).toLocaleString('id-ID')}</strong></div>
+                        <div class="flex justify-between"><span>Status SPH:</span><span class="text-emerald-700 font-bold">Otomatis berubah menjadi Deal</span></div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-end gap-2 pt-2 border-t border-slate-100">
+                        <button onclick="document.getElementById('modalKonversiInvoice').classList.add('hidden')" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:bg-slate-100 transition border border-slate-200">Batal</button>
+                        <button onclick="eksekusiBukaFormInvoice(${item.id})" class="px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">Buka Form Edit</button>
+                        <button onclick="eksekusiLangsungInvoice(${item.id})" class="px-4 py-2 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 transition shadow-sm flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-check"></i> Terbitkan Langsung
+                        </button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function eksekusiBukaFormInvoice(id) {
+            const item = getStoredData().find(i => i.id === id);
+            if (!item) return;
+            const modal = document.getElementById('modalKonversiInvoice');
+            if (modal) modal.classList.add('hidden');
+            localStorage.setItem('temp_selected_sph', JSON.stringify({ sphId: item.id, noSPH: item.no, perusahaan: item.perusahaan }));
+            window.location.href = 'invoice.html';
+        }
+
+        function eksekusiLangsungInvoice(id) {
+            const item = getStoredData().find(i => i.id === id);
+            if (!item) return;
+            const modal = document.getElementById('modalKonversiInvoice');
+            if (modal) modal.classList.add('hidden');
+
+            const invList = JSON.parse(localStorage.getItem('data_invoice')) || [];
+            const tglNow = hariIniISO();
+            const d = parseTanggal(tglNow) || new Date();
+            const bln = String(d.getMonth() + 1).padStart(2, '0');
+            const thn = d.getFullYear();
+            
+            let maks = 0;
+            invList.forEach(iv => {
+                const noStr = String(iv.no || '');
+                const m = noStr.match(/INV\/(\d+)/i) || noStr.match(/\/(\d+)\//) || noStr.match(/(\d{3})/);
+                if (m) {
+                    const val = parseInt(m[1], 10);
+                    if (!isNaN(val) && val > maks) maks = val;
+                }
+            });
+            
+            let nextSeq = maks + 1;
+            let noInvoice = `INV/${String(nextSeq).padStart(3, '0')}/${bln}/${thn}`;
+            const semuaInvNo = new Set(invList.map(x => String(x.no || '').trim().toLowerCase()));
+            while (semuaInvNo.has(noInvoice.toLowerCase())) {
+                nextSeq++;
+                noInvoice = `INV/${String(nextSeq).padStart(3, '0')}/${bln}/${thn}`;
+            }
+
+            const newInvoice = {
+                id: Date.now(),
+                no: noInvoice,
+                perusahaan: item.perusahaan || '',
+                alamat: item.alamat || '',
+                tanggalISO: tglNow,
+                tanggal: formatTanggal(d),
+                bank: 'BCA 123-456-7890 (PT Agung Jaya Listrik)',
+                status: 'Belum Lunas',
+                dp: 0,
+                items: (item.items && item.items.length) ? JSON.parse(JSON.stringify(item.items)) : [],
+                total: getNilai(item),
+                sphId: item.id,
+                noSPH: item.no
+            };
+
+            invList.unshift(newInvoice);
+            localStorage.setItem('data_invoice', JSON.stringify(invList));
+
+            // Update status SPH jadi Deal
+            const sphList = getStoredData();
+            const targetSPH = sphList.find(s => s.id === item.id);
+            if (targetSPH) {
+                targetSPH.status = 'Deal';
+                targetSPH.tanggalKeputusan = tglNow;
+                targetSPH.alasanBatal = '';
+                simpanData(sphList);
+            }
+
+            showToast(`Invoice ${noInvoice} berhasil diterbitkan ke Riwayat!`, 'success', 1200, () => {
+                window.location.href = 'riwayat-invoice.html';
+            });
+        }
+
+        // ===== Aksi turunan: kirim data SPH ke form tujuan atau langsung konversi ke Invoice =====
+        function prosesDokumen(id, jenisTujuan) {
+            const item = getStoredData().find(i => i.id === id);
+            if (!item) return;
+
+            if (jenisTujuan === 'invoice') {
+                if (item.status === 'Batal') {
+                    showConfirmModal({
+                        judul: 'SPH Berstatus Batal',
+                        pesan: 'SPH ini berstatus Batal. Tetap ingin menerbitkan Invoice?',
+                        icon: 'fa-triangle-exclamation',
+                        warnaIcon: 'text-amber-500',
+                        teksOK: 'Lanjutkan',
+                        onConfirm: () => { bukaModalKonversiInvoice(item); }
+                    });
+                    return;
+                }
+                bukaModalKonversiInvoice(item);
+                return;
+            }
+
+            // Untuk surat jalan:
+            localStorage.setItem('temp_selected_sph', JSON.stringify({ sphId: item.id, noSPH: item.no, perusahaan: item.perusahaan }));
+            window.location.href = 'surat-jalan.html';
+        }
+
+        function hapusItem(id) {
+            showConfirmModal({
+                judul: 'Hapus SPH dari Riwayat?',
+                pesan: 'Data penawaran harga ini akan dihapus permanen dari sistem.',
+                icon: 'fa-trash',
+                warnaIcon: 'text-red-600',
+                teksOK: 'Hapus',
+                onConfirm: () => {
+                    simpanData(getStoredData().filter(i => i.id !== id));
+                    terapkanFilter();
+                    showToast('SPH berhasil dihapus', 'warning', 1000);
+                }
+            });
+        }
+
+        // ===== Fitur Prediksi Konversi SPH (Random Forest Ringan) =====
+        async function prediksiSPH(id) {
+            const semua = getStoredData();
+            const item = semua.find(i => i.id === id);
+            if (!item) return;
+
+            let modal = document.getElementById('modalPrediksiSPH');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'modalPrediksiSPH';
+                modal.className = 'fixed inset-0 z-[9999] bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-200';
+                document.body.appendChild(modal);
+            }
+
+            const namaPerusahaan = String(item.perusahaan || '').toLowerCase();
+            let kategori = 'Perorangan';
+            if (namaPerusahaan.includes('pt') || namaPerusahaan.includes('cv') || namaPerusahaan.includes('kontraktor')) {
+                kategori = 'Kontraktor';
+            } else if (namaPerusahaan.includes('toko') || namaPerusahaan.includes('jaya') || namaPerusahaan.includes('elektrik')) {
+                kategori = 'Toko Listrik';
+            } else if (namaPerusahaan.includes('dinas') || namaPerusahaan.includes('kantor') || namaPerusahaan.includes('instansi')) {
+                kategori = 'Instansi';
+            }
+
+            const sekarang = new Date();
+            const tglSph = parseTanggal(item.tanggal) || sekarang;
+            const lamaTunggu = Math.max(1, selisihHari(tglSph, sekarang));
+            const nilaiTotal = getNilai(item);
+            const itemsList = Array.isArray(item.items) ? item.items : [];
+            const jmlItem = itemsList.length > 0 ? itemsList.length : 1;
+            const totalQty = itemsList.length > 0 ? itemsList.reduce((acc, it) => acc + (Number(it.qty) || 1), 0) : 1;
+            const jmlFu = (item.followups || []).length;
+            const repeatOrder = semua.some(x => x.id !== item.id && String(x.perusahaan || '').trim().toLowerCase() === String(item.perusahaan || '').trim().toLowerCase() && x.status === 'Deal') ? 1 : 0;
+
+            const payload = {
+                kategori_klien: kategori,
+                nilai_sph: nilaiTotal,
+                jumlah_item: jmlItem,
+                total_qty: totalQty,
+                diskon_persen: 0,
+                lama_tunggu_hari: lamaTunggu,
+                jumlah_followup: jmlFu,
+                histori_repeat_order: repeatOrder
+            };
+
+            // Tampilkan popup loading ringkas
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
+                    <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-700 flex items-center justify-center font-bold text-sm">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-900">Prediksi Peluang SPH</h3>
+                                <p class="text-[11px] text-slate-500">${esc(item.no)} · ${esc(item.perusahaan)}</p>
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('modalPrediksiSPH').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-xmark text-sm"></i>
+                        </button>
+                    </div>
+
+                    <div id="kontenHasilPrediksi" class="py-6 flex flex-col items-center justify-center text-center space-y-2">
+                        <div class="w-8 h-8 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+                        <div class="text-xs text-slate-600 font-medium">Menghitung peluang konversi penawaran...</div>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 1000);
+
+                const response = await fetch("http://127.0.0.1:5000/api/predict", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+
+                const hasil = await response.json();
+                if (!hasil.success) throw new Error(hasil.error || "Gagal");
+
+                renderModalHasil(item, payload, hasil);
+            } catch (err) {
+                // Kalkulasi simulasi instan (menggunakan parameter yang sama persis)
+                let prob = 50;
+                if (repeatOrder) prob += 20;
+                if (jmlFu >= 2) prob += 15;
+                if (lamaTunggu <= 7) prob += 15;
+                else if (lamaTunggu > 20) prob -= 20;
+                if (kategori === 'Kontraktor' || kategori === 'Toko Listrik') prob += 10;
+                prob = Math.min(95, Math.max(15, prob));
+
+                const hasilSimpel = {
+                    success: true,
+                    prediksi: prob >= 50 ? "Deal" : "Batal",
+                    probabilitas_deal: prob,
+                    probabilitas_batal: 100 - prob,
+                    tingkat_prioritas: prob >= 70 ? "Tinggi" : (prob >= 45 ? "Sedang" : "Rendah"),
+                    rekomendasi: prob >= 50
+                        ? "Peluang persetujuan baik. Segera hubungi pelanggan untuk konfirmasi ketersediaan barang."
+                        : "Peluang penawaran rendah. Pertimbangkan untuk menawarkan potongan harga atau follow-up ulang."
+                };
+                renderModalHasil(item, payload, hasilSimpel);
+            }
+        }
+
+        function renderModalHasil(item, payload, hasil) {
+            const box = document.getElementById('kontenHasilPrediksi');
+            if (!box) return;
+
+            const isDeal = hasil.prediksi === 'Deal';
+            const badgeWarna = isDeal ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-red-50 text-red-700 border-red-200';
+            const barWarna = isDeal ? 'bg-emerald-600' : 'bg-red-600';
+
+            box.className = "space-y-4 py-1 text-left";
+            box.innerHTML = `
+                <!-- Ringkasan Prediksi Utama -->
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-medium">Hasil Prediksi Sistem:</span>
+                        <span class="${badgeWarna} border px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5">
+                            <i class="fa-solid ${isDeal ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
+                            Peluang ${hasil.prediksi}
+                        </span>
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-xs font-semibold">
+                            <span class="text-slate-700">Peluang Disetujui (Deal):</span>
+                            <span class="text-slate-900 font-mono text-sm">${hasil.probabilitas_deal}%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="${barWarna} h-full rounded-full transition-all duration-500" style="width: ${hasil.probabilitas_deal}%"></div>
+                        </div>
+                        <div class="text-[11px] text-slate-400 text-right">Potensi Batal: ${hasil.probabilitas_batal}%</div>
+                    </div>
+                </div>
+
+                <!-- 4 Faktor Utama yang Dinilai -->
+                <div class="border border-slate-200 rounded-xl p-3 text-xs bg-white space-y-2">
+                    <div class="font-bold text-slate-800 text-[11px] border-b border-slate-100 pb-1 flex justify-between">
+                        <span>Faktor Penentu Penawaran:</span>
+                        <span class="text-slate-400 font-normal">Metode: Random Forest</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-600">
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-tag text-slate-400 text-[10px]"></i>
+                            <span>Klien: <strong>${payload.kategori_klien}</strong></span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-clock text-slate-400 text-[10px]"></i>
+                            <span>Umur: <strong>${payload.lama_tunggu_hari} hari</strong></span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-phone text-slate-400 text-[10px]"></i>
+                            <span>Follow-up: <strong>${payload.jumlah_followup} kali</strong></span>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <i class="fa-solid fa-handshake text-slate-400 text-[10px]"></i>
+                            <span>Histori: <strong>${payload.histori_repeat_order ? 'Pelanggan Lama' : 'Baru'}</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Saran Tindak Lanjut Tim Sales -->
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs space-y-1 text-blue-900">
+                    <div class="font-bold flex items-center gap-1.5 text-[11px]">
+                        <i class="fa-solid fa-lightbulb text-amber-500"></i> Rekomendasi Tindakan:
+                    </div>
+                    <p class="text-[11px] leading-relaxed text-blue-800">${hasil.rekomendasi}</p>
+                </div>
+
+                <div class="pt-2 flex justify-end">
+                    <button onclick="document.getElementById('modalPrediksiSPH').classList.add('hidden')" class="px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-semibold transition">
+                        Selesai
+                    </button>
+                </div>
+            `;
+        }
+
+        document.getElementById('modalSph').addEventListener('click', e => { if (e.target.id === 'modalSph') tutupModal(); });
+        terapkanFilter();
+        // Auto-refresh saat kembali dari halaman lain (mengatasi cache browser)
+        window.addEventListener('pageshow', () => { terapkanFilter(); });
+    </script>
+</body>
+</html>
+

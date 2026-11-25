@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Agung Jaya Listrik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        .card-dark { background: #fff; border: 1px solid #e2e8f0; }
+        .hero-banner { background: #fff; border: 1px solid #e2e8f0; border-top: 3px solid #dc2626; }
+        .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; width: 220px; border-radius: 0.75rem; box-shadow: 0 12px 24px -8px rgba(15, 23, 42, 0.18); z-index: 50; background: #fff; border: 1px solid #e2e8f0; }
+        .group:hover .dropdown-menu { display: block; }
+        .glass-input { background: #fff; border: 1px solid #cbd5e1; color: #1e293b; }
+        @media (max-width: 767px) {
+            .mobile-nav { scrollbar-width: none; }
+            .mobile-nav::-webkit-scrollbar { display: none; }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+
+    <!-- NAVBAR UTAMA -->
+    <header class="border-b border-slate-200 bg-white sticky top-0 z-50 px-4 md:px-6 py-3 flex flex-wrap items-center justify-between gap-y-3">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1 border border-slate-200">
+                <img src="logoAJL.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+                <h1 class="font-bold text-sm tracking-wide text-slate-900">Agung Jaya Listrik</h1>
+                <p class="text-[10px] text-slate-500">Invoice &amp; Dokumen</p>
+            </div>
+        </div>
+
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+            <a href="dashboard.html" class="px-3.5 py-1.5 rounded-md bg-red-50 text-red-700 font-semibold">Dashboard</a>
+            <a href="inventory.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Inventory</a>
+            <a href="jadwal.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Pengeluaran</a>
+            <a href="laporan.html" class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">Laporan</a>
+            
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+                    <span>Buat Dokumen</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Penawaran Harga</a>
+                    <a href="invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Invoice</a>
+                    <a href="surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Surat Jalan</a>
+                    <a href="po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Purchase Order</a>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <button class="px-3.5 py-1.5 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition flex items-center space-x-1.5">
+                    <span>Riwayat</span><i class="fa-solid fa-chevron-down text-[10px]"></i>
+                </button>
+                <div class="dropdown-menu p-1.5 space-y-1 text-xs">
+                    <a href="riwayat-sph.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat SPH</a>
+                    <a href="riwayat-invoice.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Invoice</a>
+                    <a href="riwayat-surat-jalan.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat Surat Jalan</a>
+                    <a href="riwayat-po.html" class="block px-3 py-2 rounded-md hover:bg-slate-100 text-slate-600">Riwayat PO</a>
+                </div>
+            </div>
+        </nav>
+
+        <a href="logout.html" class="px-3 py-1.5 rounded-md border border-slate-200 text-xs text-slate-600 hover:text-red-700 hover:bg-red-50 flex items-center space-x-2">
+            <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+        </a>
+        <nav class="mobile-nav lg:hidden w-full overflow-x-auto flex items-center gap-1 border-t border-slate-100 pt-2 text-xs font-medium whitespace-nowrap">
+            <a href="dashboard.html" class="px-3 py-2 rounded-md bg-red-50 text-red-700 font-semibold">Dashboard</a>
+            <a href="inventory.html" class="px-3 py-2 rounded-md text-slate-600">Inventory</a>
+            <a href="jadwal.html" class="px-3 py-2 rounded-md text-slate-600">Jadwal</a>
+            <a href="pengeluaran.html" class="px-3 py-2 rounded-md text-slate-600">Pengeluaran</a>
+            <a href="laporan.html" class="px-3 py-2 rounded-md text-slate-600">Laporan</a>
+            <a href="sph.html" class="px-3 py-2 rounded-md text-slate-600">Buat SPH</a>
+            <a href="invoice.html" class="px-3 py-2 rounded-md text-slate-600">Buat Invoice</a>
+            <a href="surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Surat Jalan</a>
+            <a href="po.html" class="px-3 py-2 rounded-md text-slate-600">Buat PO</a>
+            <a href="riwayat-sph.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat SPH</a>
+            <a href="riwayat-invoice.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Invoice</a>
+            <a href="riwayat-surat-jalan.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat Surat Jalan</a>
+            <a href="riwayat-po.html" class="px-3 py-2 rounded-md text-slate-600">Riwayat PO</a>
+        </nav>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8 space-y-5">
+
+        <!-- RINGKASAN PENAWARAN -->
+        <section class="hero-banner p-5 md:p-6 rounded-xl space-y-5 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-wide text-red-700 mb-1">Ringkasan tahunan</p>
+                    <h2 class="text-xl font-bold text-slate-900 tracking-tight">Dashboard Penawaran &amp; Dokumen</h2>
+                    <p class="text-sm text-slate-500 mt-1">Pantau status penawaran dan invoice dalam satu tampilan.</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <label for="filterTahun" class="text-sm text-slate-600 font-medium">Tahun</label>
+                    <select id="filterTahun" onchange="loadDashboardData()" class="glass-input px-3 py-2 rounded-md text-sm font-semibold"></select>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg">
+                    <p class="text-xs text-slate-500 mb-1 font-medium">Total SPH Terbit</p>
+                    <h3 id="statTotal" class="text-2xl font-bold text-slate-900">-</h3>
+                    <p id="subTotal" class="text-xs text-slate-500 mt-1">sesuai tanggal SPH</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg">
+                    <p class="text-xs text-slate-500 mb-1 font-medium">Deal</p>
+                    <h3 id="statDeal" class="text-2xl font-bold text-emerald-700">-</h3>
+                    <p id="subDeal" class="text-xs text-slate-500 mt-1"></p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg">
+                    <p class="text-xs text-slate-500 mb-1 font-medium">Menunggu keputusan</p>
+                    <h3 id="statPending" class="text-2xl font-bold text-amber-700">-</h3>
+                    <p id="subPending" class="text-xs text-slate-500 mt-1">belum ada keputusan</p>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg">
+                    <p class="text-xs text-slate-500 mb-1 font-medium">Nilai SPH yang Deal</p>
+                    <h3 id="statNilaiDeal" class="text-xl font-bold text-slate-900">-</h3>
+                    <p id="subNilaiDeal" class="text-xs text-slate-500 mt-1"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RINGKASAN INVOICE -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="card-dark rounded-xl p-4"><p class="text-xs text-slate-500 font-medium">Omset invoice terbit</p><h3 id="invOmset" class="text-xl font-bold text-slate-900 mt-1">-</h3><p id="invJumlah" class="text-xs text-slate-500 mt-1"></p></div>
+            <div class="card-dark rounded-xl p-4"><p class="text-xs text-slate-500 font-medium">Belum dibayar</p><h3 id="invBelum" class="text-xl font-bold text-amber-700 mt-1">-</h3><p id="invBelumSub" class="text-xs text-slate-500 mt-1">semua periode</p></div>
+            <div class="card-dark rounded-xl p-4"><p class="text-xs text-slate-500 font-medium">DP diterima</p><h3 id="invDP" class="text-xl font-bold text-slate-900 mt-1">-</h3><p id="invDPSub" class="text-xs text-slate-500 mt-1"></p></div>
+        </div>
+
+        <!-- METRIK TAMBAHAN -->
+        <section class="card-dark rounded-xl p-4 md:p-5">
+            <h3 class="text-sm font-semibold text-slate-800 mb-3">Metrik Penawaran</h3>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div><p class="text-xs text-slate-500">Tingkat Konversi</p><h3 id="statConv" class="text-lg font-bold text-red-700 mt-1">-</h3><p id="subConv" class="text-xs text-slate-500 mt-1">Deal / SPH terbit</p></div>
+                <div><p class="text-xs text-slate-500">Batal</p><h3 id="statCancel" class="text-lg font-bold text-red-700 mt-1">-</h3><p id="subCancel" class="text-xs text-slate-500 mt-1"></p></div>
+                <div><p class="text-xs text-slate-500">Rata-rata lama keputusan</p><h3 id="statLama" class="text-lg font-bold text-slate-800 mt-1">-</h3><p id="subLama" class="text-xs text-slate-500 mt-1">dari SPH terbit sampai keputusan</p></div>
+                <div><p class="text-xs text-slate-500">SPH menunggu &gt;14 hari</p><h3 id="statGantung" class="text-lg font-bold text-red-700 mt-1">-</h3><p id="subGantung" class="text-xs text-slate-500 mt-1">perlu ditindaklanjuti</p></div>
+            </div>
+        </section>
+
+        <!-- KURVA TREN -->
+        <div class="card-dark rounded-xl p-5 md:p-6 space-y-4 shadow-sm">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-200">
+                <h3 id="judulKurva" class="text-sm font-bold text-slate-900 flex items-center space-x-2"></h3>
+            </div>
+            <p class="text-xs text-slate-500">Dihitung per bulan terbit SPH. Garis putus-putus menunjukkan tingkat konversi.</p>
+            <div class="relative h-[300px] md:h-[340px] w-full"><canvas id="sphTrendChart"></canvas></div>
+        </div>
+
+        <!-- FOLLOW-UP, PELANGGAN, ALASAN BATAL -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="card-dark rounded-xl p-5 shadow-sm">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-3">
+                    <h3 class="text-sm font-bold text-slate-900">Perlu Follow-up</h3>
+                    <a href="riwayat-sph.html" class="text-xs text-red-700 hover:text-red-800 font-medium">Kelola &rarr;</a>
+                </div>
+                <div id="listFollowup" class="space-y-2 text-sm"></div>
+            </div>
+            <div class="card-dark rounded-xl p-5 shadow-sm">
+                <h3 class="text-sm font-bold text-slate-900 pb-3 border-b border-slate-200 mb-3">Peringkat Pelanggan</h3>
+                <div id="listPelanggan" class="space-y-2 text-sm"></div>
+            </div>
+            <div class="card-dark rounded-xl p-5 shadow-sm">
+                <h3 class="text-sm font-bold text-slate-900 pb-3 border-b border-slate-200 mb-3">Alasan Batal Terbanyak</h3>
+                <div id="listAlasan" class="space-y-2 text-sm"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // ===== Pengaturan skor prioritas (usulan, sesuaikan bersama pemilik) =====
+        // Skor 0-100 dihitung dari aturan, bukan prediksi statistik.
+        const CONFIG = {
+            bobot: { umur: 40, jedaFollowup: 30, nilai: 15, winRate: 15 },
+            batasUmurHari: 30,       // umur SPH maksimum yang dihitung
+            batasJedaHari: 14,       // jeda sejak kontak terakhir maksimum yang dihitung
+            nilaiBesar: 50000000,    // nilai penawaran dengan bobot penuh
+            nilaiSedang: 10000000,   // nilai penawaran dengan bobot setengah
+            ambangTinggi: 60,        // skor >= ini: Tinggi
+            ambangSedang: 35         // skor >= ini: Sedang, selain itu Rendah
+        };
+
+        const NAMA_BULAN = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+        const PETA_BULAN = { jan:0, feb:1, mar:2, apr:3, mei:4, may:4, jun:5, jul:6, agu:7, agt:7, ags:7, aug:7, sep:8, okt:9, oct:9, nov:10, des:11, dec:11 };
+        
+        // ===== Penyimpanan (prototipe: localStorage) =====
+        function getStoredData() {
+            const data = JSON.parse(localStorage.getItem('data_sph')) || [];
+            data.forEach(item => {
+                if (!item.status) item.status = 'Menunggu';
+                if (!Array.isArray(item.followups)) item.followups = [];
+            });
+            return data;
+        }
+        function simpanData(data) { localStorage.setItem('data_sph', JSON.stringify(data)); }
+
+        // ===== Utilitas tanggal dan teks =====
+        function esc(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+        }
+        function hariIniISO() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+        function parseTanggal(str) {
+            if (!str) return null;
+            str = String(str).trim();
+            let m = str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+            m = str.match(/(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})/);
+            if (m) {
+                const bln = PETA_BULAN[m[2].slice(0, 3).toLowerCase()];
+                if (bln !== undefined) return new Date(+m[3], bln, +m[1]);
+            }
+            m = str.match(/(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})/);
+            if (m) return new Date(+m[3], +m[2] - 1, +m[1]);
+            return null;
+        }
+        function formatTanggal(d) {
+            if (!(d instanceof Date)) d = parseTanggal(d);
+            if (!d) return '-';
+            return String(d.getDate()).padStart(2, '0') + ' ' + NAMA_BULAN[d.getMonth()] + ' ' + d.getFullYear();
+        }
+        function selisihHari(dari, ke) {
+            const a = new Date(dari.getFullYear(), dari.getMonth(), dari.getDate());
+            const b = new Date(ke.getFullYear(), ke.getMonth(), ke.getDate());
+            return Math.max(0, Math.round((b - a) / 86400000));
+        }
+        function getNilai(item) {
+            const kandidat = [item.total, item.grandTotal, item.grand_total, item.totalHarga, item.nilai];
+            for (const v of kandidat) {
+                if (v === undefined || v === null || v === '') continue;
+                const angka = typeof v === 'number' ? v : Number(String(v).replace(/[^\d]/g, ''));
+                if (!isNaN(angka) && angka > 0) return angka;
+            }
+            return 0;
+        }
+
+        // ===== Skor prioritas follow-up (berbasis aturan) =====
+        function hitungWinRate(semua) {
+            const peta = {};
+            semua.forEach(i => {
+                const k = String(i.perusahaan || '').trim().toLowerCase();
+                if (!peta[k]) peta[k] = { deal: 0, batal: 0 };
+                if (i.status === 'Deal') peta[k].deal++;
+                if (i.status === 'Batal') peta[k].batal++;
+            });
+            return peta;
+        }
+        function hitungPrioritas(item, petaWin) {
+            if (item.status !== 'Menunggu') return null;
+            const sekarang = new Date();
+            const tglSph = parseTanggal(item.tanggal);
+            const umur = tglSph ? selisihHari(tglSph, sekarang) : 0;
+
+            let kontakTerakhir = tglSph;
+            item.followups.forEach(f => {
+                const t = parseTanggal(f.tanggal);
+                if (t && (!kontakTerakhir || t > kontakTerakhir)) kontakTerakhir = t;
+            });
+            const jeda = kontakTerakhir ? selisihHari(kontakTerakhir, sekarang) : 0;
+
+            const nilai = getNilai(item);
+            const k = String(item.perusahaan || '').trim().toLowerCase();
+            const w = petaWin[k] || { deal: 0, batal: 0 };
+            const diputuskan = w.deal + w.batal;
+            const rate = diputuskan > 0 ? w.deal / diputuskan : 0.5;
+
+            const b = CONFIG.bobot;
+            const sUmur = b.umur * Math.min(umur, CONFIG.batasUmurHari) / CONFIG.batasUmurHari;
+            const sJeda = b.jedaFollowup * Math.min(jeda, CONFIG.batasJedaHari) / CONFIG.batasJedaHari;
+            const sNilai = nilai >= CONFIG.nilaiBesar ? b.nilai : (nilai >= CONFIG.nilaiSedang ? b.nilai / 2 : 0);
+            const sWin = b.winRate * rate;
+            const skor = Math.round(sUmur + sJeda + sNilai + sWin);
+
+            const label = skor >= CONFIG.ambangTinggi ? 'Tinggi' : (skor >= CONFIG.ambangSedang ? 'Sedang' : 'Rendah');
+            return { skor, label, umur, jeda };
+        }
+
+        // ===== Dashboard =====
+        let myChart = null;
+        const rpf = n => 'Rp ' + (Number(n) || 0).toLocaleString('id-ID');
+        const pct = r => r === null ? '-' : (Math.round(r * 10) / 10).toString().replace('.', ',') + '%';
+        function baca(k) { try { return JSON.parse(localStorage.getItem(k)) || []; } catch (e) { return []; } }
+        // Tanggal SPH: pakai tanggalISO bila ada, jika tidak baca teks "22 Okt 2026"
+        function tglSPH(i) { return parseTanggal(i.tanggalISO || i.tanggal); }
+        function statusBaku(s) { s = String(s || '').toLowerCase(); return s === 'deal' ? 'Deal' : (s === 'batal' || s === 'cancel' ? 'Batal' : 'Menunggu'); }
+        function ambilPerPelanggan(daftar) {
+            const peta = {};
+            daftar.forEach(i => {
+                const k = String(i.perusahaan || '').trim().toLowerCase();
+                if (!k) return;
+                if (!peta[k]) peta[k] = { nama: i.perusahaan, n: 0, deal: 0, batal: 0 };
+                peta[k].n++;
+                if (i.s === 'Deal') peta[k].deal++;
+                if (i.s === 'Batal') peta[k].batal++;
+            });
+            return Object.values(peta);
+        }
+
+        function isiFilterTahun(sph, inv) {
+            const sel = document.getElementById('filterTahun');
+            const dipilih = sel.value;                       // kosong saat halaman pertama dibuka
+            const tahunSPH = [];
+            sph.forEach(i => { const d = tglSPH(i); if (d) tahunSPH.push(d.getFullYear()); });
+            const set = new Set([new Date().getFullYear(), ...tahunSPH]);
+            inv.forEach(i => { const d = parseTanggal(i.tanggalISO || i.tanggal); if (d) set.add(d.getFullYear()); });
+            const tahun = Array.from(set).sort((a, b) => b - a);
+            sel.innerHTML = tahun.map(t => `<option value="${t}">${t}</option>`).join('');
+            // Pertama kali dibuka: tahun SPH terbaru. Setelahnya: pilihan pengguna dipertahankan.
+            const awal = tahunSPH.length ? Math.max(...tahunSPH) : new Date().getFullYear();
+            sel.value = dipilih && tahun.includes(Number(dipilih)) ? dipilih : String(awal);
+        }
+
+        function loadDashboardData() {
+            const semua = getStoredData().map(i => ({ ...i, s: statusBaku(i.status), d: tglSPH(i) }));
+            const inv = baca('data_invoice');
+            isiFilterTahun(semua, inv);
+            const tahun = Number(document.getElementById('filterTahun').value);
+            document.getElementById('judulKurva').innerHTML = `<i class="fa-solid fa-chart-line text-red-700"></i><span>Tren SPH Tahun ${tahun} (Januari - Desember)</span>`;
+
+            const dataTahun = semua.filter(i => i.d && i.d.getFullYear() === tahun);
+            const total = dataTahun.length;
+            const deal = dataTahun.filter(i => i.s === 'Deal');
+            const batal = dataTahun.filter(i => i.s === 'Batal');
+            const menunggu = dataTahun.filter(i => i.s === 'Menunggu');
+            const diputuskan = deal.length + batal.length;
+
+            // KPI penawaran
+            document.getElementById('statTotal').innerText = total;
+            document.getElementById('statDeal').innerText = deal.length;
+            document.getElementById('statPending').innerText = menunggu.length;
+            document.getElementById('statCancel').innerText = batal.length;
+            document.getElementById('subDeal').innerText = diputuskan ? 'win rate ' + pct(deal.length / diputuskan * 100) + ' dari yang diputuskan' : 'belum ada keputusan';
+            document.getElementById('subCancel').innerText = batal.length ? 'alasan tercatat: ' + batal.filter(i => i.alasanBatal).length : '';
+            document.getElementById('statConv').innerText = total ? pct(deal.length / total * 100) : '-';
+            document.getElementById('subConv').innerText = total ? 'Deal / SPH terbit (' + deal.length + ' dari ' + total + ')' : 'belum ada SPH pada tahun ini';
+
+            const nilaiDeal = deal.reduce((s, i) => s + getNilai(i), 0);
+            const adaNilai = dataTahun.some(i => getNilai(i) > 0);
+            document.getElementById('statNilaiDeal').innerText = adaNilai ? rpf(nilaiDeal) : '-';
+            document.getElementById('subNilaiDeal').innerText = adaNilai ? 'dari total penawaran ' + rpf(dataTahun.reduce((s, i) => s + getNilai(i), 0)) : 'nilai SPH belum tersimpan (SPH lama)';
+
+            const lama = dataTahun.filter(i => i.s !== 'Menunggu' && i.tanggalKeputusan && i.d).map(i => {
+                const k = parseTanggal(i.tanggalKeputusan);
+                return k ? selisihHari(i.d, k) : null;
+            }).filter(x => x !== null);
+            document.getElementById('statLama').innerText = lama.length ? (Math.round(lama.reduce((a, b) => a + b, 0) / lama.length * 10) / 10).toString().replace('.', ',') + ' hari' : '-';
+
+            const petaWin = hitungWinRate(semua);
+            const antrean = semua.filter(i => i.s === 'Menunggu').map(i => ({ i, p: hitungPrioritas({ ...i, status: 'Menunggu' }, petaWin) })).filter(x => x.p);
+            document.getElementById('statGantung').innerText = antrean.filter(x => x.p.umur > 14).length;
+
+            // Invoice
+            const invTahun = inv.filter(i => { const d = parseTanggal(i.tanggalISO || i.tanggal); return d && d.getFullYear() === tahun; });
+            document.getElementById('invOmset').innerText = rpf(invTahun.reduce((s, i) => s + (i.total || 0), 0));
+            document.getElementById('invJumlah').innerText = invTahun.length + ' invoice pada ' + tahun;
+            const belum = inv.filter(i => i.status !== 'Lunas');
+            document.getElementById('invBelum').innerText = rpf(belum.reduce((s, i) => s + ((i.total || 0) - (i.dp || 0)), 0));
+            document.getElementById('invBelumSub').innerText = belum.length + ' invoice belum lunas (semua periode)';
+            const dp = invTahun.filter(i => i.status === 'DP Diterima');
+            document.getElementById('invDP').innerText = rpf(dp.reduce((s, i) => s + (i.dp || 0), 0));
+            document.getElementById('invDPSub').innerText = dp.length + ' invoice dengan DP';
+
+            // Follow-up teratas
+            document.getElementById('listFollowup').innerHTML = antrean.length ? antrean.sort((a, b) => b.p.skor - a.p.skor).slice(0, 5).map(({ i, p }) => {
+                const w = p.label === 'Tinggi' ? 'text-red-700' : (p.label === 'Sedang' ? 'text-amber-700' : 'text-emerald-700');
+                return `<div class="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-md px-3 py-2">
+                    <div><div class="font-semibold text-slate-800">${esc(i.perusahaan)}</div><div class="text-xs text-slate-500">${esc(i.no)} · umur ${p.umur} hari</div></div>
+                    <span class="font-bold ${w}">${p.label}</span></div>`;
+            }).join('') : '<p class="text-slate-500">Tidak ada SPH yang menunggu keputusan.</p>';
+
+            // Peringkat pelanggan
+            const pel = ambilPerPelanggan(dataTahun).sort((a, b) => b.deal - a.deal || b.n - a.n).slice(0, 5);
+            document.getElementById('listPelanggan').innerHTML = pel.length ? pel.map((p, n) => {
+                const k = p.deal + p.batal;
+                return `<div class="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-md px-3 py-2">
+                    <div><div class="font-semibold text-slate-800">${n + 1}. ${esc(p.nama)}</div><div class="text-xs text-slate-500">${p.n} SPH · ${p.deal} deal · ${p.batal} batal</div></div>
+                    <span class="font-bold text-red-700">${k ? pct(p.deal / k * 100) : '-'}</span></div>`;
+            }).join('') : '<p class="text-slate-500">Belum ada data pada tahun ini.</p>';
+
+            // Alasan batal
+            const peta = {};
+            batal.forEach(i => { const a = String(i.alasanBatal || '').trim(); if (!a) return; const k = a.toLowerCase(); peta[k] = peta[k] || { a: a, n: 0 }; peta[k].n++; });
+            const alasan = Object.values(peta).sort((a, b) => b.n - a.n).slice(0, 5);
+            document.getElementById('listAlasan').innerHTML = alasan.length ? alasan.map(x =>
+                `<div class="flex items-center justify-between bg-slate-50 border border-slate-100 rounded-md px-3 py-2"><span class="text-slate-700">${esc(x.a)}</span><span class="font-bold text-red-700">${x.n}</span></div>`).join('')
+                : '<p class="text-slate-500">Belum ada SPH berstatus Batal dengan alasan.</p>';
+
+            // Grafik
+            const perBulan = f => { const a = new Array(12).fill(0); dataTahun.filter(f).forEach(i => a[i.d.getMonth()]++); return a; };
+            const dB = perBulan(i => i.s === 'Deal'), pB = perBulan(i => i.s === 'Menunggu'), cB = perBulan(i => i.s === 'Batal'), tB = perBulan(() => true);
+            const rate = tB.map((t, k) => t ? Math.round(dB[k] / t * 1000) / 10 : null);
+            const ctx = document.getElementById('sphTrendChart').getContext('2d');
+            if (myChart) myChart.destroy();
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                    datasets: [
+                        { label: 'Deal', data: dB, borderColor: '#15803d', backgroundColor: 'rgba(21, 128, 61, 0.06)', borderWidth: 2, tension: 0.25, fill: true },
+                        { label: 'Menunggu', data: pB, borderColor: '#b45309', backgroundColor: 'rgba(180, 83, 9, 0.05)', borderWidth: 2, tension: 0.25, fill: true },
+                        { label: 'Batal', data: cB, borderColor: '#b91c1c', backgroundColor: 'rgba(185, 28, 28, 0.04)', borderWidth: 2, tension: 0.25, fill: true },
+                        { label: 'Tingkat konversi (%)', data: rate, borderColor: '#475569', borderDash: [5, 4], borderWidth: 2, tension: 0.2, fill: false, yAxisID: 'y1', spanGaps: true }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: { legend: { position: 'top', labels: { color: '#475569', font: { size: 11 }, usePointStyle: true, boxWidth: 8 } } },
+                    scales: {
+                        x: { grid: { color: '#f1f5f9' }, ticks: { color: '#64748b' } },
+                        y: { beginAtZero: true, grid: { color: '#e2e8f0' }, ticks: { color: '#64748b', precision: 0 }, title: { display: true, text: 'Jumlah SPH', color: '#64748b' } },
+                        y1: { position: 'right', min: 0, max: 100, grid: { drawOnChartArea: false }, ticks: { color: '#64748b', callback: v => v + '%' } }
+                    }
+                }
+            });
+        }
+
+        loadDashboardData();
+    </script>
+</body>
+</html>
